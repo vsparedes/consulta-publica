@@ -1,4 +1,4 @@
-FROM democracyos/democracyos:2.9.13
+FROM democracyos/democracyos:2.11.15
 
 MAINTAINER Matías Lescano <matias@democraciaenred.org>
 
@@ -9,8 +9,8 @@ ENV LOCALE=es \
   MULTI_FORUM=true \
   RESTRICT_FORUM_CREATION=true \
   FAVICON=/ext/lib/boot/favicon.ico \
-  LOGO=https://cldup.com/_ZriYFdZN4.svg \
-  LOGO_MOBILE=https://cldup.com/_ZriYFdZN4.svg \
+  LOGO=https://consultapublica.blob.core.windows.net/assets/Logo_Presidencia.svg \
+  LOGO_MOBILE=https://consultapublica.blob.core.windows.net/assets/Logo_Presidencia.svg \
   NOTIFICATIONS_MAILER_EMAIL=gobiernoabierto@modernizacion.gob.ar \
   NOTIFICATIONS_MAILER_NAME='Consulta Pública Argentina' \
   ORGANIZATION_EMAIL=gobiernoabierto@modernizacion.gob.ar \

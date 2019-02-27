@@ -1,5 +1,4 @@
 {
-  "header.forums": "Administración",
   "settings.sidebar.forums": "Administración",
   "newsfeed.call-to-action.manage-forums": "Administración",
 
@@ -33,5 +32,7 @@
   "comments.sign-in-required": "Debés estar registrado para participar",
   "comments.your-argument": "Tu comentario",
   "comments.your.arguments": "Tus comentarios",
-  "proposal-options.must-be-signed-in": "Debés estar registrado para participar"
+  "proposal-options.must-be-signed-in": "Debés estar registrado para participar",
+
+  "forum.form.rich.summary.label": "Resumen largo"
 }

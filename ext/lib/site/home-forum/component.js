@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import { browserHistory, Link } from 'react-router'
+import Jump from 'jump.js'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
 import Footer from 'ext/lib/site/footer/component'
-import TopicCard from './topic-card/component'
+import TopicCard from 'ext/lib/site/cards-slider/topic-card/component'
+import ForumDescription from './forum-description/component'
 
 export default class HomeForum extends Component {
   constructor (props) {
@@ -17,7 +20,6 @@ export default class HomeForum extends Component {
 
   componentDidMount () {
     const name = this.props.params.forum
-
     forumStore.findOneByName(name)
       .then((forum) => {
         this.setState({ forum })
@@ -40,10 +42,32 @@ export default class HomeForum extends Component {
       })
   }
 
+  handleScroll = () => {
+    Jump('#anchor')
+  }
+
   render () {
     if (!this.state.forum) return null
 
     const { forum } = this.state
+
+    let author = null
+    if (forum.extra.owner) {
+      let authorName
+      if (forum.extra.ownerUrl) {
+        authorName = (
+          <a
+            href={forum.extra.ownerUrl}
+            target='_blank'
+            rel='noopener noreferrer'>
+            {forum.extra.owner}
+          </a>
+        )
+      } else {
+        authorName = forum.extra.owner
+      }
+      author = <span>{ authorName }</span>
+    }
 
     return (
       <div className='ext-forum-home'>
@@ -71,14 +95,43 @@ export default class HomeForum extends Component {
           <div className='jumbotron_body'>
             <div className='container'>
               <h1>{forum.title}</h1>
-              <p className='lead'>{forum.summary}</p>
+              <a
+                className='btn btn-primary'
+                onClick={this.handleScroll} >
+                Elegí un eje y participá
+              </a>
             </div>
           </div>
         </section>
-        <div className='topics-container'>
-          {this.state.topics.map((topic) => (
-            <TopicCard key={topic.id} topic={topic} />
-          ))}
+        { (forum.extra && forum.extra.owner) &&
+          <div className='container'>
+            <div className='row'>
+              <div className='col-md-8 offset-md-2 autor-container'>
+                <span>
+                  <strong>Autor:</strong>
+                </span>
+                { author }
+              </div>
+            </div>
+          </div>
+        }
+        { (forum.extra && forum.extra.richSummary) ?
+          <ForumDescription content={forum.extra.richSummary} />
+        :
+          <div className='container summary-container'>
+            {forum.summary}
+          </div>
+        }
+        <div className='container topics-container' id='anchor' >
+          {this.state.topics.length > 0 &&
+            <h5>{`${this.state.topics.length} ${this.state.topics.length > 1 ? 'ejes comprenden' : 'eje comprende'} esta consulta`}</h5>
+          }
+          <div className='topics-card-wrapper'>
+            {this.state.topics
+              .sort((a,b) => a.mediaTitle.localeCompare(b.mediaTitle))
+              .map((topic) => <TopicCard key={topic.id} topic={topic} />)
+            }
+          </div>
         </div>
         <Footer />
       </div>

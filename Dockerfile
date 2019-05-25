@@ -2,6 +2,10 @@ FROM democracyos/democracyos:2.11.15
 
 MAINTAINER Matías Lescano <matias@democraciaenred.org>
 
+COPY ./dos-override/models/comment.js /usr/src/lib/models/comment.js
+COPY ./dos-override/api-v2/db-api/comments/index.js /usr/src/lib/api-v2/db-api/comments/index.js
+COPY ./dos-override/api-v2/db-api/comments/scopes.js /usr/src/lib/api-v2/db-api/comments/scopes.js
+
 ENV LOCALE=es \
   AVAILABLE_LOCALES=es,en \
   ENFORCE_LOCALE=true \

@@ -7,6 +7,7 @@ import topicStore from 'lib/stores/topic-store/topic-store'
 import Footer from 'ext/lib/site/footer/component'
 import TopicCard from 'ext/lib/site/cards-slider/topic-card/component'
 import ForumDescription from './forum-description/component'
+import ForumStat from './forum-stats/component'
 
 export default class HomeForum extends Component {
   constructor (props) {
@@ -95,7 +96,7 @@ export default class HomeForum extends Component {
           <div className='jumbotron_body'>
             <div className='container'>
               <h1>{forum.title}</h1>
-              { forum.extra.contentType === 'ejes' &&
+              { (forum.extra.contentType === 'ejes' || forum.extra.contentType === undefined) &&
               <a
                 className='btn btn-primary'
                 onClick={this.handleScroll} >
@@ -131,6 +132,7 @@ export default class HomeForum extends Component {
             {forum.summary}
           </div>
         }
+        <ForumStat forum={forum}/>
         <div className='container topics-container' id='anchor' >
           {this.state.topics.length > 0 && (forum.extra.contentType === 'ejes' || forum.extra.contentType === undefined) &&
             <h5>{`${this.state.topics.length} ${this.state.topics.length > 1 ? 'ejes comprenden' : 'eje comprende'} esta consulta`}</h5>

@@ -5,6 +5,8 @@ import Footer from 'ext/lib/site/footer/component'
 import Sidebar from 'ext/lib/site/help/sidebar/component'
 import MarkdownGuide from 'lib/site/help/md-guide/component'
 import * as articles from './articles'
+import Stats from './stats/component'
+
 
 export default class HelpLayout extends PureComponent {
   articles = [
@@ -19,6 +21,12 @@ export default class HelpLayout extends PureComponent {
       Content: () => <Content content={articles.acerca} />,
       slug: 'acerca',
       path: '/ayuda/acerca'
+    },
+        {
+      title: 'Estadisticas',
+      Content: Stats,
+      slug: 'estadisticas',
+      path: '/ayuda/estadisticas'
     },
     {
       title: t('help.tos.title'),
@@ -65,9 +73,9 @@ export default class HelpLayout extends PureComponent {
                   activeSlug={active.slug}
                   articles={this.articles} />
               </aside>
-              <aricle className='help-content col-md-8'>
+              <article className='help-content col-md-8'>
                 <active.Content />
-              </aricle>
+              </article>
             </div>
           </section>
         </div>

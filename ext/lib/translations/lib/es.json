@@ -6,7 +6,7 @@
   "admin-topics-form.description.authorUrl": "URL con información del autor",
   "admin-topics-form.placeholder.author": "Ministerio de Modernizacion",
   "admin-topics-form.placeholder.authorUrl": "https://www.argentina.gob.ar/modernizacion",
-
+  "admin-sidebar.comments.title": "Comentarios y estadisticas",
   "comment-card.flagged-as-spam": "Este comentario fue reportado como abuso",
   "comment-card.remove-argument": "Borrar comentario",
   "comments.argument-limited": "El comentario no puede exceder los 4096 caracteres",

@@ -1,3 +1,5 @@
+![Consulta Pública Argentina](/docs/consulta-publica-header.png?raw=true "Consulta Pública Argentina")
+
 # Consulta Pública Argentina
 
 Fork de la plataforma [DemocracyOS](https://github.com/DemocracyOS/democracyos) con modificaciones específicas para Gobierno Abierto de Argentina

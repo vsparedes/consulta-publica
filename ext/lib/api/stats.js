@@ -93,9 +93,29 @@ app.get('/forums',
   function getAllForums(req, res, next) {
     Forum
       .find({ deletedAt: null, visibility: 'public', "extra.hidden": false })
+      .lean()
       .exec()
       .then((forums) => {
-        req.forums = forums
+        let forumsCopy = []
+        const legitRoles = ['owner', 'admin', 'collaborator', 'author', 'moderator']
+        forums.forEach(forum => {
+          let forumCopy = forum
+          let officialAdmins = forum.permissions.filter(admin => {
+            return legitRoles.includes(admin.role)
+          })
+          let isOwnerIncluded = officialAdmins.find(admin => {
+            return admin.user.toString() == forum.owner.id.toString()
+          })
+          if (!isOwnerIncluded) {
+            officialAdmins.push({
+              role: 'owner',
+              user: forum.owner.toString()
+            })
+          }
+          forumCopy['officialAdmins'] = officialAdmins
+          forumsCopy.push(forumCopy)
+        });
+        req.forums = forumsCopy
         next()
       }).catch(next)
   },
@@ -124,15 +144,21 @@ app.get('/forums',
       }).catch(next)
   },
   function countAllComments(req, res, next) {
+    let officialsPerForum = {}
+    req.forums.forEach( forum => {
+      officialsPerForum[forum._id] = forum.officialAdmins.map(official => official.user.toString())
+    })
     let forumsTopicPromises = req.forums.map(forum => {
       return Topic.find({ forum: forum._id }).exec()
     });
     Promise.all(forumsTopicPromises)
       .then(forumsTopics => {
+        let officialsPerTopic = {}
         let topicIds = []
         forumsTopics.forEach(forumTopics => {
           forumTopics.forEach(topic => {
             topicIds.push(topic._id)
+            officialsPerTopic[topic._id] = officialsPerForum[topic.forum]
           })
         })
         let commentsTopicPromises = topicIds.map(topic => {
@@ -140,21 +166,41 @@ app.get('/forums',
         });
         Promise.all(commentsTopicPromises)
           .then(commentsTopic => {
-            const reducerComments = (accumulator, currentValue) => accumulator + currentValue.length;
-            const reducerReplies = (accumulator, currentValue) => {
-              let replies = 0
-              currentValue.forEach(comment => {
-                replies += comment.replies.length
+            const mergeArrays = (accumulator, currentValue) => accumulator.concat(currentValue)
+            let allComments = commentsTopic.reduce(mergeArrays, [])
+            let totalWithOfficialReply = 0;
+            let uniqueParticipants = []
+            allComments.forEach(comment => {
+              let foundAtLeastOneOfficial = false
+              // ------
+              if (!uniqueParticipants.includes(comment.author.toString())
+                && !officialsPerTopic[comment.reference].includes(comment.author.toString())) { uniqueParticipants.push(comment.author.toString()) }
+              comment.replies.forEach(reply => {
+                if (!uniqueParticipants.includes(reply.author.toString())
+                  && !officialsPerTopic[comment.reference].includes(reply.author.toString())) { uniqueParticipants.push(reply.author.toString()) }
               })
-              return accumulator + replies
-            }
+              // ------
+              if (officialsPerTopic[comment.reference].includes(comment.author.toString())) {
+                foundAtLeastOneOfficial = true
+              }
+              else {
+                comment.replies.forEach(reply => {
+                  if (officialsPerTopic[comment.reference].includes(reply.author.toString())) {
+                    foundAtLeastOneOfficial = true
+                  }
+                })
+              }
+              //
+              if (foundAtLeastOneOfficial) totalWithOfficialReply += 1
+            })
             res.status(200).json({
               countForums: req.forums.length,
               countTopics: req.countTopics,
               countOpenTopics: req.countOpenTopics,
               countClosedTopics: req.countClosedTopics,
-              countComments: commentsTopic.reduce(reducerComments, 0),
-              countReplies: commentsTopic.reduce(reducerReplies, 0)
+              totalWithOfficialReply: totalWithOfficialReply,
+              totalComments: allComments.length,
+              uniqueParticipants: uniqueParticipants.length
             })
           })
       }).catch(next)

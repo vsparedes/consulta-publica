@@ -14,8 +14,9 @@ export default class Stats extends PureComponent {
       countTopics: 0,
       countOpenTopics: 0,
       countClosedTopics: 0,
-      countComments: 0,
-      countReplies: 0,
+      totalWithOfficialReply: 0,
+      totalComments: 0,
+      uniqueParticipants: 0,
       error: '',
     }
   }
@@ -40,8 +41,9 @@ export default class Stats extends PureComponent {
           countTopics: stats.countTopics,
           countOpenTopics: stats.countOpenTopics,
           countClosedTopics: stats.countClosedTopics,
-          countComments: stats.countComments,
-          countReplies: stats.countReplies,
+          totalComments: stats.totalComments,
+          totalWithOfficialReply: stats.totalWithOfficialReply,
+          uniqueParticipants: stats.uniqueParticipants,
           isFetching: false
         })
       })
@@ -73,13 +75,17 @@ export default class Stats extends PureComponent {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-6">
-          <h4 className="subtitle text-center">Total comentarios</h4>
-          <h2 className="text-center text-primary">{this.state.countComments}</h2>
+          <div className="col-md-4">
+          <h4 className="subtitle text-center">Total<br></br>comentarios</h4>
+          <h2 className="text-center text-primary">{this.state.totalComments}</h2>
           </div>
-          <div className="col-md-6">
-          <h4 className="subtitle text-center">Total respuestas</h4>
-          <h2 className="text-center text-primary">{this.state.countReplies}</h2>
+          <div className="col-md-4">
+          <h4 className="subtitle text-center">Total<br></br>atentidos</h4>
+          <h2 className="text-center text-primary">{this.state.totalWithOfficialReply}</h2>
+          </div>
+          <div className="col-md-4">
+          <h4 className="subtitle text-center">Total<br></br>participantes</h4>
+          <h2 className="text-center text-primary">{this.state.uniqueParticipants}</h2>
           </div>
         </div>
       </div>

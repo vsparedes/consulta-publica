@@ -13,7 +13,6 @@ export default class ForumTable extends Component {
       totalSpamComments: 0,
       totalWithoutOfficialReply: 0,
       uniqueParticipants: 0,
-      availableMarks: ['util', 'importante', 'complicado', 'agresivo', 'cuidado'],
       marksCount: [],
     }
   }
@@ -99,7 +98,7 @@ export default class ForumTable extends Component {
   }
   calculateMarkers() {
     let marksCount = this.state.marksCount
-    this.state.availableMarks.forEach(m => {
+    this.props.availableMarks.forEach(m => {
       let markCount = 0;
       Object.keys(this.props.comments).forEach(topicId => {
         this.props.comments[topicId].forEach(c => {

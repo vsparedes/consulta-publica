@@ -17,7 +17,6 @@ export default class TopicTable extends Component {
       totalSpamComments: 0,
       totalWithoutOfficialReply: 0,
       uniqueParticipants: 0,
-      availableMarks: ['util', 'importante', 'complicado', 'agresivo', 'cuidado'],
       marksCount: [],
     }
   }
@@ -92,7 +91,7 @@ export default class TopicTable extends Component {
   }
   calculateMarkers() {
     let marksCount = this.state.marksCount
-    this.state.availableMarks.forEach(m => {
+    this.props.availableMarks.forEach(m => {
       let markCount = 0;
       this.props.comments.forEach(c => {
         if (c.adminMarks.includes(m)) markCount += 1
@@ -110,7 +109,7 @@ export default class TopicTable extends Component {
   }
 
   render() {
-    let { forum, topic, admins, comments, showNotifyChanges, updateAll } = this.props
+    let { forum, topic, admins, comments, showNotifyChanges, updateAll, availableMarks   } = this.props
     let { marksCount } = this.state
     return (
       <div>
@@ -202,7 +201,7 @@ export default class TopicTable extends Component {
         <div>
           {
             comments.map(c => (
-              <CommentContainer comment={c} admins={admins} showNotifyChanges={showNotifyChanges} updateAll={updateAll} />
+              <CommentContainer comment={c} admins={admins} showNotifyChanges={showNotifyChanges} updateAll={updateAll} availableMarks={availableMarks} />
             )
             )
           }

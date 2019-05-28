@@ -17,6 +17,7 @@ export default class AdminComments extends Component {
       availableAdmins: [],
       availableRoles: ['owner','admin','collaborator','author','participant','moderator'],
       officialRoles: ['owner','admin','collaborator','author','moderator'],
+      availableMarks: ['Destacado','Derivar','No aplica','Alerta','Pregunta'],
       notifyChange: false,
       notifyMessage: ''
     }
@@ -154,7 +155,7 @@ export default class AdminComments extends Component {
 
   render() {
     let { forum } = this.props
-    let { isFetching, topics, comments, admins , officialRoles, notifyMessage, notifyChange } = this.state
+    let { isFetching, topics, comments, admins , officialRoles, notifyMessage, notifyChange, availableMarks } = this.state
     return (
       <div className="comments-admin">
        <a href={urlBuilder.for('admin.comments.csv', { forum: forum.name })}
@@ -168,10 +169,10 @@ export default class AdminComments extends Component {
           </div>
           : (
             <div>
-              <ForumTable forum={forum} topics={topics} comments={comments} admins={admins} />
+              <ForumTable forum={forum} topics={topics} comments={comments} admins={admins} availableMarks={availableMarks} />
               {
                 topics.map(t => 
-                <TopicTable forum={forum} topic={t} comments={comments[t.id]} admins={admins} showNotifyChanges={this.showNotifyChanges} updateAll={this.updateAll}/>                
+                <TopicTable forum={forum} topic={t} comments={comments[t.id]} admins={admins} showNotifyChanges={this.showNotifyChanges} updateAll={this.updateAll} availableMarks={availableMarks}/>                
                 )
               }
             </div>

@@ -14,7 +14,6 @@ class CommentContainer extends Component {
      textReply: null,
      flagedByOficial: false,
      meFlaggedIt: false,
-     availableMarks: ['util','importante','complicado','agresivo','cuidado'],
     }
     this.recheck = this.recheck.bind(this);
     this.toggleShrink = this.toggleShrink.bind(this);
@@ -299,8 +298,7 @@ markComment(mark){
 
 
   render() {
-    let { comment, user } = this.props
-    let { availableMarks } = this.state
+    let { comment, user, availableMarks } = this.props
     return (
       <div>
       <div className={this.getClassNameContainer()}>

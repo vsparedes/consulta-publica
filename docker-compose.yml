@@ -8,20 +8,41 @@ services:
     environment:
       - NODE_ENV=development
       - DEBUG=democracyos*
-      - MONGO_URL=mongodb://mongo/development
-    links:
-      - mongo
+      # - MONGO_URL=mongodb://mongo/consulta
+      - MONGO_URL=mongodb://localhost:27017/consulta
+      - STAFF=guillermocroppi@gmail.com
+      - NOTIFICATIONS_MAILER_EMAIL=guillermocroppi@gmail.com
+      - NOTIFICATIONS_MAILER_NAME='The best mapache ever'
+      - JWT_SECRET=6BB8C00A05ECEA4C04E81BEFB13B9FBBC3175E47839644CCC1CCA1D4641FB980FBBC3175E47839644CCC1CCA1D4641FB980
+
+      # - NOTIFICATIONS_NODEMAILER={"host":"smtp.mailgun.org","port":465,"secure":true,"auth":{"user":"postmaster@mg.democracyos.org","pass":"9a3acf985c834e86a2b3acaf4778f887"}}
+      - NOTIFICATIONS_NODEMAILER={"host":"smtp.mailtrap.io","port":2525,"auth":{"user":"a25e4cb76d8eb0","pass":"f304115d9cf487"}}
+      - CUSTOM_SIGNIN=true
+      - OIDC_ISSUER=https://qa-id.argentina.gob.ar
+      - OIDC_AUTH=https://qa-id.argentina.gob.ar/authorize
+      - OIDC_TOKEN=https://qa-id.argentina.gob.ar/token
+      - OIDC_USER=https://qa-id.argentina.gob.ar/userinfo
+      - OIDC_CLIENT_ID=896941
+      - OIDC_CLIENT_SECRET=9c33875787b99e51b1fcfb2689763cc891c6911eca2b6d7856ff5753
+      - OIDC_CALLBACK=https://consultapublica.azurewebsites.net/ext/auth/miargentina/authorization-code/callback
+    # links:
+    #   - mongo
     ports:
       - 3000:3000
     volumes:
       - ./ext/lib:/usr/src/ext/lib
       - ./public:/usr/src/public
+      # Add every forced override to democracyos
+      - ./dos-override/models/comment.js:/usr/src/lib/models/comment.js
+      - ./dos-override/api-v2/db-api/comments/index.js:/usr/src/lib/api-v2/db-api/comments/index.js
+      - ./dos-override/api-v2/db-api/comments/scopes.js:/usr/src/lib/api-v2/db-api/comments/scopes.js
     tty: true
+    network_mode: "host"
 
-  mongo:
-    container_name: consultapublica-mongo
-    image: mongo:3.2
-    ports:
-      - 27017:27017
-    volumes:
-      - ./tmp/db:/data/db
+  # mongo:
+  #   container_name: consultapublica-mongo
+  #   image: mongo:3.2
+  #   ports:
+  #     - 27017:27017
+  #   volumes:
+  #     - ./tmp/db:/data/db

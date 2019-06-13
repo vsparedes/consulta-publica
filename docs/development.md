@@ -2,9 +2,7 @@
 
 Consulta Publica requiere **Docker** y **Docker compose**.
 
-Una vez que verifique que cuenta con estas dependencias.
-
-1. Cloná el repositorio
+Una vez que verifique que cuenta con estas dependencias, haga un **FORK** y clone su nuevo repositorio.
 
 ### Variables de entorno
 

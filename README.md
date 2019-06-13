@@ -15,5 +15,5 @@ El código se basa en [DemocracyOS](https://github.com/DemocracyOS/democracyos),
 - [Consejos para el desarrollo](/docs/consejos-dev.md)
 - [Personalización de la plataforma](/docs/personalizacion.md)
 - [Deployment](/docs/deployment.md)
-- [Manual para administradores](/docs/manual-administrador)
+- [Manual para administradores](/docs/manual-admin.md)
 - [Manual para usuarios](/docs/manual-usuarios.md)

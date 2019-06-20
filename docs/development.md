@@ -4,7 +4,7 @@ Consulta Publica requiere **Docker** y **Docker compose**.
 
 Una vez que verifique que cuenta con estas dependencias, haga un **FORK** y clone su nuevo repositorio.
 
-### Variables de entorno
+## Variables de entorno
 
 En primer lugar debemos adecuar el `docker-compose.yml`
 
@@ -97,7 +97,9 @@ services:
 
 Luego de que todo este definido, podemos arrancar el servidor ejecutando:
 
-```docker-compose up --build```
+```
+docker-compose up --build
+```
 
 Puede tardar un rato largo en buildear. Cuando haya terminado y si todo sale bien, el servidor y container estarán correctamente levantados y listos para poder trabajar.
 
@@ -105,7 +107,7 @@ Puede tardar un rato largo en buildear. Cuando haya terminado y si todo sale bie
 Para entrar a la aplicacion a [http://localhost:3000](http://localhost:3000)
 
 
-### Comandos utiles
+## Comandos utiles
 
 Para abrir el server local
 
@@ -130,7 +132,7 @@ Para poder entrar a la base de datos
 ```
 docker exec -it miconsultapublica-mongo bash
 ```
-### Conectar a una base de dato Mongo local
+## Conectar a una base de dato Mongo local
 
 Si lo prefiere, puede conectar la aplicacion a su mongo local. En primer lugar aseguresé que sea **Mongo 3.2**, si no, procure utilizar el container que se construye en el build del docker-compose.
 

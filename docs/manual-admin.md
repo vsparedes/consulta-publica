@@ -15,7 +15,7 @@
 ## Introducción 
 Este **manual instructivo** está destinado a los administradores de organismos subnacionales que implementen una versión de la plataforma Consulta Pública, suministrada por la Secretaria de Modernización.
 ## ¿Qué es [Consulta Pública](https://consultapublica.argentina.gob.ar/)?
-Consulta Pública es un canal de diálogo online y debate que permite la interacción entre el gobierno y la comunidad, promueve la participación ciudadana y ayuda a fortalecer la democracia.
+Consulta Pública es un canal de diálogo online y debate que permite la interacción entre el gobierno y la consulta, promueve la participación ciudadana y ayuda a fortalecer la democracia.
 
 En Consulta Pública se abren temas e iniciativas a la ciudadanía, para posibilitar la participación a través de comentarios y opiniones con el objetivo de mejorar las políticas implementadas. A esta instancia de participación la llamamos **“Consulta Pública”.**
 
@@ -58,7 +58,7 @@ La consulta debe estar organizada en **“ejes”.** El eje es el espacio donde 
 ![Imagen](/docs/admin-manual/image3.png?raw=true)
 
 ## ¿Cómo administrar mi plataforma y sus consultas?
-Para ingresar al **panel de administración**, hacé click en “MIS COMUNIDADES”.
+Para ingresar al **panel de administración**, hacé click en “MIS CONSULTAS”.
 
 ![Imagen](/docs/admin-manual/image4.png?raw=true)
 
@@ -71,7 +71,7 @@ Las **consultas** son creadas únicamente por el organizador de la Plataforma. E
 
 Al crear una consulta, debés completar todos los campos que figuran a continuación:
 
- - URL de la comunidad: Este campo habilita un cambio en la URL de acceso directo a la consulta.
+ - URL de la consulta: Este campo habilita un cambio en la URL de acceso directo a la consulta.
  - Título: Editar el título de la consulta
  - Resumen: Editar el texto qué se muestra en la página principal, debajo del título de la consulta.
  - Resumen largo: Editar el contenido visible en la vista de la consulta.
@@ -83,12 +83,12 @@ Al crear una consulta, debés completar todos los campos que figuran a continuac
  
 ![Imagen](/docs/admin-manual/image6.png?raw=true)
 
-Una vez creada las consultas, las podés encontrar en **“MIS COMUNIDADES”** y editar desde el ícono del *engranaje*:
+Una vez creada las consultas, las podés encontrar en **“MIS CONSULTAS”** y editar desde el ícono del *engranaje*:
 
 ![Imagen](/docs/admin-manual/image7.png?raw=true)
 
 ## ¿Cómo administrar una Consulta?
-Cada consulta tiene su propia configuración de temas (ejes), privilegios, contenido (editar comunidad), comentarios y estadísticas y moderación de etiquetas.
+Cada consulta tiene su propia configuración de temas (ejes), privilegios, contenido (editar consulta), comentarios y estadísticas y moderación de etiquetas.
 
 ![Imagen](/docs/admin-manual/image8.png?raw=true)
 
@@ -146,14 +146,14 @@ La consulta, una vez cargada, debe ser **guardada**. Existe la opción de “pub
 
 *Permisos*: existen distintos tipos de permisos en Consulta Pública, según los **privilegios** que posea. En esta opción, el *admin* agregar o modificar organizadores y administradores.
 
- - **organizador:** es único (superadmin) y nadie puede quitarle permisos. Posee permisos para realizar todas las acciones posibles. Es el encargado de crear "las comunidades" (consultas).
+ - **organizador:** es único (superadmin) y nadie puede quitarle permisos. Posee permisos para realizar todas las acciones posibles. Es el encargado de crear "las consultas".
 -  **administradores:** pueden otorgar permisos a otros usuarios, editar opciones y editar contenido (crear y editar ejes, etc).
 -  **colaboradores:** pueden crear, editar, borrar y publicar ejes.
 - **autores:** pueden crear y editar ejes, pero no publicarlos o editarlos.
 
 ![Imagen](/docs/admin-manual/image14.png?raw=true)
 
-3. **Editar comunidad:** en caso de querer modificar la información general sobre la consulta y controlar algunas opciones, se pueden realizar **cambios** en los mismos campos completados cuando se creó la consulta.
+3. **Editar consulta:** en caso de querer modificar la información general sobre la consulta y controlar algunas opciones, se pueden realizar **cambios** en los mismos campos completados cuando se creó la consulta.
 
 ![Imagen](/docs/admin-manual/image15.png?raw=true)
 

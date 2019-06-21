@@ -93,8 +93,9 @@ La instalación de la plataforma se realiza con el segundo playbook, `instalacio
 La información sobre las posibles variables y sus valores puede obtenerse en el fichero `variables.yaml` de este repositorio.
 
 **Funcionamiento del deployment**
+
 La aplicación se instala en formato de docker-compose, por defecto se levantan tres contenedores:
-* [Traefik](https://traefik.io): es un proxy/balanceador de carga orientado a entornos cloud. Es el que realiza la terminación TLS cuando se utiliza HTTPS y hace las veces de proxy reverso contra la aplicación. 
+* [Traefik](https://traefik.io): es un proxy/balanceador de carga orientado a entornos cloud. Es el que realiza la terminación TLS cuando se utiliza HTTPS y hace las veces de proxy reverso contra la aplicación.
 * Aplicación de Consulta Pública: la aplicación indicada en la variable `IMAGE` de `variables.yaml`.
 * MongoDB: en caso de no utilizar una base de datos externa, el deployment levanta una instancia de MongoDB 3.2 en un contenedor.
 

@@ -77,6 +77,13 @@ El deployment está basado en Docker y docker-compose. Estos playbooks fueron pr
 
 ## Playbooks
 
+IMPORTANTE: muchas configuraciones requieren permisos de superusuario, en caso de que el usuario configurado en el inventario de Ansible requiera de su password para utilizar `sudo` es necesario agregar a cada ejecución de `ansible-playbook` el flag `--ask-become-pass` al final de cada línea, ejemplo:
+
+```bash
+# ansible mostrará un prompt para ingresar el password de sudoer
+$ ansible-playbook instalacion_docker.yaml --extra-vars "host_destino=mi-server" --ask-become-pass
+```
+
 ### Instalación de Docker
 
 La primera tarea a realizar es la instalación de Docker en el servidor de destino. Esto se realiza con el playbook `instalacion_docker.yaml` de la siguiente forma:

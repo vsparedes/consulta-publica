@@ -63,7 +63,7 @@ export default class extends Component {
                 {
                   this.state.isFetching ? 
                   <div className="spinning-loader"></div>
-                  : <div className="stat-value">{Math.ceil((this.state.totalWithOfficialReply/this.state.totalComments)*100)}%</div>
+                  : <div className="stat-value">{Math.ceil((this.state.totalWithOfficialReply/(this.state.totalComments || 1))*100)}%</div>
                 }
               </div>
               <div className="col-md-4 stat-container">

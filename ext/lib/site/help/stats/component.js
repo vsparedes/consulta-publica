@@ -61,30 +61,22 @@ export default class Stats extends PureComponent {
         </div>
         <br/>
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-md-6">
           <h4 className="subtitle text-center">Total de ejes</h4>
           <h2 className="text-center text-primary">{this.state.countTopics}</h2>
           </div>
-          <div className="col-md-4">
-          <h4 className="subtitle text-center">Ejes abiertos</h4>
-          <h2 className="text-center text-primary">{this.state.countOpenTopics}</h2>
-          </div>
-          <div className="col-md-4">
-          <h4 className="subtitle text-center">Ejes cerrados</h4>
-          <h2 className="text-center text-primary">{this.state.countClosedTopics}</h2>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-4">
+                    <div className="col-md-6">
           <h4 className="subtitle text-center">Total<br></br>comentarios</h4>
           <h2 className="text-center text-primary">{this.state.totalComments}</h2>
           </div>
-          <div className="col-md-4">
-          <h4 className="subtitle text-center">Total<br></br>atentidos</h4>
+        </div>
+        <div className="row">
+          <div className="col-md-6">
+          <h4 className="subtitle text-center">Comentarios<br></br>atentidos</h4>
           <h2 className="text-center text-primary">{this.state.totalWithOfficialReply}</h2>
           </div>
-          <div className="col-md-4">
-          <h4 className="subtitle text-center">Total<br></br>participantes</h4>
+          <div className="col-md-6">
+          <h4 className="subtitle text-center">Cantidad de<br></br>participantes</h4>
           <h2 className="text-center text-primary">{this.state.uniqueParticipants}</h2>
           </div>
         </div>

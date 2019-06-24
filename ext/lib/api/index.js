@@ -11,6 +11,8 @@ if (process.env.CUSTOM_SIGNIN) app.use('/ext/auth/miargentina', require('./miarg
 app.use('/ext/api/forum', require('./forum'))
 app.use('/ext/api/filter', require('./filter'))
 app.use('/ext/api/search', require('./search'))
+app.use('/ext/api/admin-stats', require('./admin-stats'))
+app.use('/ext/api/stats', require('./stats'))
 
 app.use(function validationErrorHandler (err, req, res, next) {
   if (res.headersSent) return next(err)

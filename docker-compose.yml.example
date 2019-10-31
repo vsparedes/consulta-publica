@@ -16,8 +16,8 @@ services:
       # - STAFF=hola@miemail.com,usuario@otroemail.com,otrousuario@nuevoemail.com
       - STAFF=hola@miemail.com
       # Logos
-      LOGO=/ext/lib/site/home-multiforum/logo-header.svg \
-      LOGO_MOBILE=/ext/lib/site/home-multiforum/logo-header.svg \
+      - LOGO=/ext/lib/site/home-multiforum/logo-header.svg \
+      - LOGO_MOBILE=/ext/lib/site/home-multiforum/logo-header.svg \
       # Organizacion
       - ORGANIZATION_EMAIL=miconsultapublica@midominio.com.ar
       - ORGANIZATION_NAME="Mi Consulta Pública"
@@ -30,7 +30,7 @@ services:
       - TWEET_TEXT="Estoy tratando de mejorar esta propuesta “{topic.mediaTitle}” ¡Participá vos también!"
       # Configuracion del mailer
       - NOTIFICATIONS_MAILER_EMAIL=miconsultapublica@midominio.com
-      - NOTIFICATIONS_MAILER_NAME="Mi consulta ṕública"
+      - NOTIFICATIONS_MAILER_NAME="Mi consulta pública"
       - NOTIFICATIONS_NODEMAILER={"host:"xxxxx.smtp.com","port":465,"secure":true,"auth":{"user":"xxxxxxxx","pass":"xxxxxxx"}} #Cambiar
       # Requerido: Genere un token para JWT
       - JWT_SECRET= #Cambiar

@@ -36,8 +36,8 @@ services:
       # - STAFF=hola@miemail.com,usuario@otroemail.com,otrousuario@nuevoemail.com
       - STAFF=hola@miemail.com
       # Logos
-      - ORGANIZATION_EMAIL=miconsultapublica@midominio.com.ar
-      - ORGANIZATION_NAME="Mi Consulta Pública"
+      - LOGO=/ext/lib/site/home-multiforum/logo-header.svg \
+      - LOGO_MOBILE=/ext/lib/site/home-multiforum/logo-header.svg \
       # Organizacion
       - ORGANIZATION_EMAIL=miconsultapublica@midominio.com.ar
       - ORGANIZATION_NAME="Mi Consulta Pública"

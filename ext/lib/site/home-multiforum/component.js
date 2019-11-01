@@ -200,9 +200,10 @@ class HomeMultiForum extends Component {
               </li></ul>
             </div>
           </div>
-          {!forums.length && <h3 className="no-result">No hay resultados</h3>}
 
           <Search />
+
+          {!forums.length && <h3 className="no-result content-center">No hay resultados</h3>}
 
           {!!forums.length && forums.map((forum, key) => (
             <ForumContainer forum={forum} key={forum.id} />

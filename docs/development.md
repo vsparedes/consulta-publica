@@ -89,8 +89,9 @@ services:
 ##### Notas
 * Es muy importante que en `STAFF` agregues el email del admin o el de los administradores.
 * Por defecto, tal com esta en el docker-compose, está en el puerto 3000. Puede cambiar el puerto el cual se expone la aplicación (Ej: `3000:9999`)
+* Podés comentar las variables `NOTIFICATION_*` si todavía no tenés un servidor de correo definido.
 * Si se prefiere conectar a una base de dato local, fuera del entorno, vea el apartado [Conectar a una base de datos mongo local](#local-mongo)
-* Podes configurar DemocracyOS con cualquiera de las variables de entorno listadas acá: http://docs.democracyos.org/configuration.html
+* Podés configurar DemocracyOS con cualquiera de las variables de entorno listadas acá: http://docs.democracyos.org/configuration.html
 * El puerto `27017` está expuesto para que puedas administrar la base de datos con algún cliente de MongoDB, por ejemplo con [Robomongo](https://robomongo.org/).
 * Todas las vistas personalizadas para Consulta Pública se encuentran en [`/ext`](ext). Siguiendo el mismo patrón de carpetas que [DemocracyOS/democracyos](https://github.com/DemocracyOS/democracyos).
 

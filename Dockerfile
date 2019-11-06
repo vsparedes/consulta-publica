@@ -1,6 +1,10 @@
 FROM democracyos/democracyos:2.11.15
 
-MAINTAINER Matías Lescano <matias@democraciaenred.org>
+MAINTAINER Democracia en Red <it@democracyos.io>
+
+COPY ./dos-override/models/comment.js /usr/src/lib/models/comment.js
+COPY ./dos-override/api-v2/db-api/comments/index.js /usr/src/lib/api-v2/db-api/comments/index.js
+COPY ./dos-override/api-v2/db-api/comments/scopes.js /usr/src/lib/api-v2/db-api/comments/scopes.js
 
 ENV LOCALE=es \
   AVAILABLE_LOCALES=es,en \
@@ -9,8 +13,8 @@ ENV LOCALE=es \
   MULTI_FORUM=true \
   RESTRICT_FORUM_CREATION=true \
   FAVICON=/ext/lib/boot/favicon.ico \
-  LOGO=https://consultapublica.blob.core.windows.net/assets/Logo_Presidencia.svg \
-  LOGO_MOBILE=https://consultapublica.blob.core.windows.net/assets/Logo_Presidencia.svg \
+  LOGO=/ext/lib/site/footer/logo-footer.svg \
+  LOGO_MOBILE=/ext/lib/site/footer/logo-footer.svg \
   NOTIFICATIONS_MAILER_EMAIL=gobiernoabierto@modernizacion.gob.ar \
   NOTIFICATIONS_MAILER_NAME='Consulta Pública Argentina' \
   ORGANIZATION_EMAIL=gobiernoabierto@modernizacion.gob.ar \

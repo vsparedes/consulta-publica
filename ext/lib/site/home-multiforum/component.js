@@ -89,12 +89,12 @@ class HomeMultiForum extends Component {
         <section
           className='cover jumbotron'
           style={{
-            backgroundImage: `url('https://consultapublica.blob.core.windows.net/assets/header_consulta-publica.png')`
+            backgroundImage: `url('/ext/lib/site/home-multiforum/header_consulta-publica.png')`
           }}>
           <div className='jumbotron_body'>
             <div className='container'>
               <img
-                src="https://consultapublica.blob.core.windows.net/assets/logo_consulta-publica.svg"
+                src="/ext/lib/site/home-multiforum/logo_consulta-publica.svg"
                 alt="Logo"
                 width="270px"
               />
@@ -126,7 +126,7 @@ class HomeMultiForum extends Component {
             <div className='section-icon col-md-4'>
               <img
                 className='icon'
-                src='https://consultapublica.blob.core.windows.net/assets/icono_consulta-publica-1.svg'
+                src='/ext/lib/site/home-multiforum/icono_consulta-publica-1.svg'
                 alt='Informate'
               />
               <div className='text'>
@@ -136,7 +136,7 @@ class HomeMultiForum extends Component {
             <div className='section-icon col-md-4'>
              <img
                 className='icon'
-                src='https://consultapublica.blob.core.windows.net/assets/icono_consulta-publica-2.svg'
+                src='/ext/lib/site/home-multiforum/icono_consulta-publica-2.svg'
                 alt='Participá'
               />
               <div className='text'>
@@ -146,7 +146,7 @@ class HomeMultiForum extends Component {
             <div className='section-icon col-md-4'>
              <img
                 className='icon'
-                src='https://consultapublica.blob.core.windows.net/assets/icono_consulta-publica-3.svg'
+                src='/ext/lib/site/home-multiforum/icono_consulta-publica-3.svg'
                 alt='Compartí'
               />
               <div className='text'>

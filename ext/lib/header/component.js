@@ -83,7 +83,8 @@ class Header extends Component {
               </Link>
             </div>
 
-            {this.props.user.state.fulfilled && (
+            {/* Sacamos el ícono momentáneamente
+            this.props.user.state.fulfilled && (
               <div className='header-item notifications-link'>
                 <Link
                   to='/notificaciones'
@@ -91,7 +92,7 @@ class Header extends Component {
                   <span className='icon-bell' />
                 </Link>
               </div>
-            )}
+            )*/}
 
             {this.props.user.state.fulfilled && (
               <UserBadge />

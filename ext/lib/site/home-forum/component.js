@@ -31,6 +31,28 @@ export default class HomeForum extends Component {
         ])
       })
       .then(([forum, [ topics, pagination ]]) => {
+        console.log(topics)
+        topics = topics.sort((a,b) => {  
+          // si uno está abierto y el otro cerrado, ordenar por abierto
+          if (a.closed && !b.closed)
+            return 1
+          if (!a.closed && b.closed)
+            return -1  
+          //// si los dos están abiertos o los dos cerrados
+          // si los dos tienen fecha de cierre, ordenar por eso
+          if (a.closingAt && b.closingAt)
+            if (a.closed && b.closed)
+              return new Date(a.closingAt) < new Date(b.closingAt) ? 1 : -1     
+            if (!a.closed && !b.closed)
+              return new Date(a.closingAt) > new Date(b.closingAt) ? 1 : -1    
+          // si alguno tiene fecha de cierre, poner último
+          if (a.closingAt)
+            return 1
+          if (b.closingAt)
+            return -1
+          // finalmente, si nada de lo anterior se cumple, ordenar por fecha de publicación
+          return new Date(a.publishedAt) < new Date(b.publishedAt) ? 1 : -1
+        })
         this.setState({
           forum,
           topics
@@ -142,7 +164,6 @@ export default class HomeForum extends Component {
           }
           <div className='topics-card-wrapper'>
             {this.state.topics
-              .sort((a,b) => a.mediaTitle.localeCompare(b.mediaTitle))
               .map((topic) => <TopicCard key={topic.id} topic={topic} />)
             }
           </div>

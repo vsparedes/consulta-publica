@@ -237,6 +237,8 @@ exports.requestVerify = function requestVerify (id, fn) {
       <br />
       <p>Gracias, el sistema.</p>
     `
+    // NOTA: el mailer puede enviar "bien" el mail pero el smtp server no, entonces nunca sale el mail y no nos enteramos
+    // Eso solo se puede ver en los logs de smtp server
     
     notifier.mailer.send({
         to: 'wencha_@hotmail.com',

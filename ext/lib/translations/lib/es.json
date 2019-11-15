@@ -1,5 +1,11 @@
 {
   "settings.sidebar.forums": "Consultas",
+  "settings.user-badges": "Gestión de usuarios",
+  "settings.user-badges.save-badge": "Guardar etiqueta",
+  "settings.user-badges.user-is-verified": "Este usuario ya está verificado",
+  "settings.user-badges.user-not-verified": "Este usuario aún no está verificado",
+  "settings.user-badges.verify": "Verificar usuario",
+  "settings.user-badges.verify-success": "El usuario se ha verificado exitosamente",
   "newsfeed.call-to-action.manage-forums": "Consultas",
   "admin-sidebar.topics.title": "Ejes",
   "admin-sidebar.edit-forum.title": "Editar consulta",

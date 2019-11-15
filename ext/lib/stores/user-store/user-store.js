@@ -7,12 +7,15 @@ class UserStore extends Store {
   }
 
   search (query) {
-    const url = this.url('search', { q: query })
+    //const url = this.url('search', { q: query })
+    const url = `/ext/api/user-verify/search?q=${query}`
+    console.log('search url', url)
 
     const fetch = new Promise((resolve, reject) => {
       request
         .get(url)
         .end((err, res) => {
+          console.log('search end', err, res)
           if (err) return reject(err)
           resolve(res.body)
         })

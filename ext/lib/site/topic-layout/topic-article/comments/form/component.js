@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import t from 't-component'
 import userConnector from 'lib/site/connectors/user'
 import AutoGrowTextarea from 'lib/site/topic-layout/topic-article/comments/form/autogrow-textarea'
-import userStore from '../../../../../stores/user-store/user-store'
+import userStore from 'ext/lib/stores/user-store/user-store'
 
 class CommentsForm extends Component {
   constructor (props) {

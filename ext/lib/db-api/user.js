@@ -199,7 +199,8 @@ exports.expose.confidential.keys = [
   'staff',
   'notifications',
   'locale',
-  'privileges'
+  'privileges',
+  'extra'
 ]
 
 /**
@@ -221,10 +222,11 @@ exports.expose.ordinary.keys = [
   'displayName',
   'avatar',
   'badge',
-  'locale'
+  'locale',
+  'extra'
 ]
 
-////// HASTA ACÁ ES EL ORIGINAL
+////// HASTA ACÁ ERA EL ORIGINAL
 
 exports.requestVerify = function requestVerify (id, fn) {
   log('Requesting verify for User %s', id)
@@ -254,4 +256,20 @@ exports.requestVerify = function requestVerify (id, fn) {
   })
   
   return this
+}
+
+exports.verifyUser = function verifyUser (id) {
+  log('Verifying User with id %s', id)
+  
+  return new Promise((resolve, reject) => {
+    User
+      .findOneAndUpdate({_id : id}, { $set: { 'extra.verified': true } }, function (err, r) {
+        if (err) {
+          log('Verify User error: %s', err)
+          return reject(err)
+        }
+        log('Verify User OK')
+        resolve(1)
+      })
+  })
 }

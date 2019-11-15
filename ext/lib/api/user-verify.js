@@ -8,10 +8,11 @@ var privileges = require('lib/privileges/forum')
 var utils = require('lib/utils')
 var expose = utils.expose
 var restrict = utils.restrict
+var pluck = utils.pluck
 var models = require('lib/models')
 var User = models.User
 
-const api = require('../db-api')
+const dbApi = require('../db-api')
 
 const app = module.exports = express.Router()
 
@@ -26,7 +27,7 @@ function requestUserVerify(req, res, next) {
   
   log('Sending user verify request for id %s', verifyId)
   
-  api.user.requestVerify(verifyId, function (err, user) {
+  dbApi.user.requestVerify(verifyId, function (err, user) {
     if(err) next(err)
     log('User verify request sent successfully for id %s', user.id)
     return res.status(200).json({
@@ -35,5 +36,36 @@ function requestUserVerify(req, res, next) {
         user: user
       }
     })
+  })
+})
+
+app.post('/verify/:id',
+middlewares.users.restrict,
+function requestUserVerify(req, res, next) {
+  if (!req.user.staff) return res.send(401)
+  
+  let verifyId = req.params.id
+  
+  log('Verifying user with id %s', verifyId)
+  
+  dbApi.user.verifyUser(verifyId)
+    .then(() => {
+      res.status(200).json({status: 200})
+    })
+    .catch(next)
+})
+
+// Creamos un search aparte para no tener que pisar toda la Web API de user (lib/user/index.js)
+// Necesitaba exponer el campo 'extra', y para eso tenía que apuntar al search de nuestra Db API
+app.get('/search', restrict, function (req, res) {
+  var q = req.param('q')
+
+  log('Request user/search %j', q)
+
+  dbApi.user.search(q, function (err, users) {
+    if (err) next(err)
+
+    log('Serving users %j', pluck(users, 'id'))
+    res.status(200).json(users.map(dbApi.user.expose.ordinary))
   })
 })

@@ -12,10 +12,14 @@
           .picture
           p.name
       .form-group
+        label #{'Verificación'}
+        label.help-text #{'La verificación de usuario permite saber qué usuarios tienen su identidad validada.'}
         label.user-is-verified
         button#submit-verify(tabindex=5)=t('settings.user-badges.verify')
       .form-group
         label #{t('settings.badge')}
+        br
+        label.help-text #{'Las etiquetas permiten poner anotaciones en los usuarios.'}
         input.form-control(type='text', name='badge', tabindex=2, placeholder=t(''), value='', validate='required', maxlength=50)
       .form-group
         button#submit-badge.btn.btn-success.btn-block.btn-lg(tabindex=4)=t('settings.user-badges.save-badge')

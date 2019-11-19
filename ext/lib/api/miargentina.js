@@ -29,6 +29,7 @@ function assignProfile (user, profile, accessToken, fn) {
   try {
     user.set('profiles.custom', profile._json)
     user.set('emailValidated', true)
+    user.set('extra.verified', true)
 
     if (profile._json.given_name) {
       user.set('firstName', profile._json.given_name)

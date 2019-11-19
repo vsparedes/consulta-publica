@@ -175,3 +175,30 @@ Por ultimo debemos comentar el servicio de mongo, para que no se construya el co
   #   volumes:
   #     - ./tmp/db:/data/db
 ```
+
+## Conectar a un servidor SMTP local
+
+Para esto podemos usar la imagen [namshi/smtp](https://hub.docker.com/r/namshi/smtp).
+
+Por ejemplo, si usamos una cuenta de Gmail de prueba, agregar en su compose:
+
+```yaml
+  mailserver:
+    image: namshi/smtp
+    environment:
+      - GMAIL_USER=mi-usuario@gmail.com
+      - GMAIL_PASSWORD=mi-contraseña-que-no-debo-publicar
+```
+
+Posteriormente, cambiar las variables de entorno correspondientes del contenedor `app`:
+
+```yaml
+      - NOTIFICATIONS_MAILER_EMAIL=mi-usuario@gmail.com
+      - NOTIFICATIONS_NODEMAILER={"host":"mailserver","port":25,"secure":false}
+ ```
+ 
+ Notar que si bien la conexión a este servidor SMTP no está cifrada, la conexión del servidor SMTP a Gmail sí lo está.
+  
+## Extendiendo los modelos de la BBDD o su API
+
+Para hacer esto debes copiar los archivos originales de DoS y agregarlos en la carpeta `dos-overrides`, bajo la misma ruta. Posteriormente incluírlos en `volumes` en el `docker-compose.yml`.

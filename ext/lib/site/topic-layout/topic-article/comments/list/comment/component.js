@@ -4,7 +4,7 @@ import t from 't-component'
 import config from 'lib/config'
 import userConnector from 'lib/site/connectors/user'
 import CommentReplies from './replies/component'
-import CommentHeader from 'lib/site/topic-layout/topic-article/comments/list/comment/header/component'
+import CommentHeader from './header/component'
 import CommentFooter from 'lib/site/topic-layout/topic-article/comments/list/comment/footer/component'
 import CommentContent from 'lib/site/topic-layout/topic-article/comments/list/comment/content/component'
 

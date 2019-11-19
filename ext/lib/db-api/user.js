@@ -233,7 +233,7 @@ exports.expose.ordinary.keys = [
 exports.requestVerify = function requestVerify (id, fn) {
   log('Requesting verify for User %s', id)
   const { VERIFY_USER_REQUEST_EMAIL } = process.env
-  log(VERIFY_USER_REQUEST_EMAIL)
+  
   if (!VERIFY_USER_REQUEST_EMAIL){
     log('Must provide environment variable VERIFY_USER_REQUEST_EMAIL to send this mail')
     fn({status:500, error:'Bad server configuration. Check error logs.'})

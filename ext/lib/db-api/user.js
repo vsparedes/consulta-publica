@@ -4,6 +4,8 @@ const User = require('lib/models').User
 const utils = require('lib/utils')
 const pluck = utils.pluck
 const expose = utils.expose
+const config = require('lib/config')
+const urlBuilder = require('lib/url-builder')
 
 const log = debug('democracyos:db-api:user')
 
@@ -230,20 +232,30 @@ exports.expose.ordinary.keys = [
 
 exports.requestVerify = function requestVerify (id, fn) {
   log('Requesting verify for User %s', id)
+  const { VERIFY_USER_REQUEST_EMAIL } = process.env
+  log(VERIFY_USER_REQUEST_EMAIL)
+  if (!VERIFY_USER_REQUEST_EMAIL){
+    log('Must provide environment variable VERIFY_USER_REQUEST_EMAIL to send this mail')
+    fn({status:500, error:'Bad server configuration. Check error logs.'})
+  }
   
   this.get(id, function (err, user) {
+    const {protocol, host, publicPort} = config
+    if (publicPort == 80 || publicPort == 443)
+      publicPort = null
+    const verifyConfigUrl = `${protocol}://${host}${publicPort?':'+publicPort:''}${urlBuilder.for('settings.user-badges')}`
+    
     let mailSubject = 'Consulta Pública - Solicitud de verificación de cuenta'
     let mailBodyHtml = `
-      <p>El usuario <strong>${user.displayName}</strong>, con email <a href="mailto:${user.email}">${user.email}</a>, ha solicitado verificar su cuenta.</p>
-      <p>Por favor, enviale alguna respuesta a su pedido.</p>
-      <br />
-      <p>Gracias, el sistema.</p>
+      <p>El usuario <strong>${user.displayName}</strong> solicitó la verificación de su cuenta en la plataforma Consulta Pública.</p>
+      <p>Podés contactarlo a su correo electrónico <a href="mailto:${user.email}">${user.email}</a> para solicitar información.</p>
+      <p>Para verificar su cuenta entrá a la sección de <a href="${verifyConfigUrl}">Gestión de usuarios</a> de la plataforma, buscá el usuario y clickeá en <em>Verificar Usuario.</em></p>
     `
     // NOTA: el mailer puede enviar "bien" el mail pero el smtp server no, entonces nunca sale el mail y no nos enteramos
     // Eso solo se puede ver en los logs de smtp server
     
     notifier.mailer.send({
-        to: 'wencha_@hotmail.com',
+        to: VERIFY_USER_REQUEST_EMAIL,
         subject: mailSubject,
         html: mailBodyHtml
       }).then(() => { 

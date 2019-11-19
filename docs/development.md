@@ -52,6 +52,8 @@ services:
       - NOTIFICATIONS_MAILER_EMAIL=miconsultapublica@midominio.com
       - NOTIFICATIONS_MAILER_NAME="Mi consulta ṕública"
       - NOTIFICATIONS_NODEMAILER={"host:"xxxxx.smtp.com","port":465,"secure":true,"auth":{"user":"xxxxxxxx","pass":"xxxxxxx"}} #Cambiar
+      # El mail del que recibe los pedidos de verificación de cuentas
+      - VERIFY_USER_REQUEST_EMAIL=miadminconsultapublica@midominio.com
       # Requerido: Genere un token para JWT
       - JWT_SECRET= #Cambiar
       # Si desea activar Mi Argentina, descomente los siguientes puntos

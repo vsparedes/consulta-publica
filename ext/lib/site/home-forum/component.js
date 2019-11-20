@@ -31,7 +31,8 @@ export default class HomeForum extends Component {
         ])
       })
       .then(([forum, [ topics, pagination ]]) => {
-        console.log(topics)
+        // ordenamos topics por abiertos y cerrados, y por fechas de cierre
+        // mismo sort utilizado en cards-slider
         topics = topics.sort((a,b) => {  
           // si uno está abierto y el otro cerrado, ordenar por abierto
           if (a.closed && !b.closed)

@@ -211,7 +211,7 @@ class HomeMultiForum extends Component {
           {!!forums.length && showMore &&
             <div className='row content-center'>
               <button className="btn btn-active show-more" onClick={this.handleMoreClick}>
-                Cargar mas consultas
+                Cargar más consultas
               </button>
             </div>
           }

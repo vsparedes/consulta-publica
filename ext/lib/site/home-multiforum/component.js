@@ -30,6 +30,7 @@ class HomeMultiForum extends Component {
       .then((forums) => {
         this.setState({
           forums,
+          // las páginas son de a 3 (definido en ext/lib/api/filter.js), entonces si devuelve 3, tal vez hay más
           showMore: forums.length === 3
         })
       })
@@ -63,7 +64,7 @@ class HomeMultiForum extends Component {
         this.setState({
           page: this.state.page + 1,
           forums: [...this.state.forums, ...forums],
-          showMore: forums.length === 10
+          showMore: forums.length === 3
         });
       })
       .catch(console.error)

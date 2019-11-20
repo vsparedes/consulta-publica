@@ -11,6 +11,8 @@
   "admin-sidebar.edit-forum.title": "Editar consulta",
   "admin-topics-form.title.create": "Nuevo eje (o propuesta)",
   "admin-topics-form.title.edit": "Edición de eje (o propuesta)",
+  "admin-topics-form.llamado.title.create": "Nuevo llamado",
+  "admin-topics-form.llamado.title.edit": "Edición de llamado",
   "admin-permissions.visibility.closed.description": "Todos pueden ver la consulta. Eliges quienes pueden participar.",
   "admin-permissions.visibility.collaborative.description": "Todos pueden ver y crear la consulta además de participar.",
   "admin-permissions.visibility.private.description": "Eliges quién puede ver la consulta y participar.",

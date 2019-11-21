@@ -1,6 +1,6 @@
 - function te (str) { return t(str) !== str }
 
-#topic-wrapper(class=forum.visibility === 'collaborative' && !forum.privileges.canChangeTopics ? 'collaborative' : '')
+#topic-wrapper.llamado(class=forum.visibility === 'collaborative' && !forum.privileges.canChangeTopics ? 'collaborative' : '')
   - if (tags.length === 0)
     if (user.staff)
       p.alert.alert-danger.text-center
@@ -19,7 +19,7 @@
           = t('admin-topics-form.title.preview')
           | &nbsp;
           i.icon-eye
-    include commands
+    include commands-llamado
     .topic-admin
       form(action=form.action, method=form.method, role='form', autocomplete='off', novalidate, autovalidate='autovalidate', autosubmit='autosubmit')
         - if (topic.privileges && !topic.privileges.canEdit)
@@ -79,4 +79,4 @@
             button.add-link.btn.btn-link(type='button')
               = '+ ' + t('admin-topics-form.button.add-link')
         input.btn.btn-success.hide(type='submit', value=t('admin-topics-form.button.submit'))
-    include commands
+    include commands-llamado

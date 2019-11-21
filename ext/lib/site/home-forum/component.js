@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { browserHistory, Link } from 'react-router'
 import Jump from 'jump.js'
+import urlBuilder from 'lib/url-builder'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
 import Footer from 'ext/lib/site/footer/component'
@@ -67,7 +68,13 @@ export default class HomeForum extends Component {
   }
 
   handleScroll = () => {
-    Jump('#anchor')
+    Jump('#anchor', { offset: -40 })
+  }
+
+  handleCargarPropuesta = () => {
+    window.location = urlBuilder.for('admin.topics.create', {
+      forum: this.state.forum.name
+    })
   }
 
   render () {
@@ -163,12 +170,25 @@ export default class HomeForum extends Component {
           </div>
         }
         <ForumStat forum={forum}/>
-        <div className='container topics-container' id='anchor' >
+        { forum.extra.contentType === 'llamado' && 
+         <div className='container cargar-propuesta' id='anchor'>
+          <h5>Podés participar subiendo tu propuesta a esta consulta</h5>
+          <a
+            className='btn btn-primary'
+            onClick={this.handleCargarPropuesta} >
+            Cargar propuesta
+          </a>
+         </div>
+        }
+        <div className='container topics-container' >
           {this.state.topics.length > 0 && (forum.extra.contentType === 'ejes' || forum.extra.contentType === undefined) &&
             <h5>{`${this.state.topics.length} ${this.state.topics.length > 1 ? 'ejes comprenden' : 'eje comprende'} esta consulta`}</h5>
           }
           {this.state.topics.length > 0 && forum.extra.contentType === 'propuestas' &&
             <h5>{`${this.state.topics.length} ${this.state.topics.length > 1 ? 'propuestas comprenden' : 'propuesta comprende'} esta consulta`}</h5>
+          }
+          {this.state.topics.length > 0 && forum.extra.contentType === 'llamado' &&
+            <h5>Conocé las propuestas subidas y comentá</h5>
           }
           <div className='topics-card-wrapper'>
             {this.state.topics

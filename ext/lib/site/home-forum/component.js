@@ -123,14 +123,14 @@ export default class HomeForum extends Component {
               <a
                 className='btn btn-primary'
                 onClick={this.handleScroll} >
-                Proponé
+                Elegí un eje y participá
               </a>
               }
               { forum.extra.contentType === 'propuestas' && 
                 <a
                   className='btn btn-primary'
                   onClick={this.handleScroll} >
-                  Proponé
+                  Mirá las propuestas y participá
                 </a>
               }
             </div>

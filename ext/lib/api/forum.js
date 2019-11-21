@@ -56,6 +56,7 @@ function createForum(req, res, next) {
     permissions: req.body.permissions,
     extra: {
       richSummary: req.body.richSummary,
+      contentType: req.body.contentType,
       hidden: false
     },
     topicsAttrs: [attrPregunta]

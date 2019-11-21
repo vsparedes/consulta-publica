@@ -16,7 +16,7 @@ main.container
                 span.mobile /
               input(type='text', name='name', validate='required forum', autofocus, id='hostname', autocorrect='off', autocapitalize='off')
               span.error.name-unavailable.hide=t('forum.form.url.unavailable')
-
+          
           fieldset
             label= t('forum.form.title.label')
             .form-group.clearfix.title
@@ -26,6 +26,14 @@ main.container
             label= t('forum.form.summary.label')
             .form-group.clearfix.summary
               input(type='text', name='summary', placeholder= t('forum.form.summary.placeholder'), maxlength=300, validate='max-length:300')
+              
+          fieldset
+            label= t('forum.form.contentType.label')
+            .form-group.clearfix.contentType            
+              select.input-group(name='contentType', value='ejes', validate='required')
+                option(value='ejes')= 'Ejes de consulta'
+                option(value='propuestas')= 'Propuestas'
+                option(value='llamado')= 'Llamado'
 
           fieldset
             label.rich-summary= t('forum.form.rich.summary.label')

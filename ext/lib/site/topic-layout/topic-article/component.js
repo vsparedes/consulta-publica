@@ -102,7 +102,9 @@ class TopicArticle extends Component {
           authorUrl={topic.authorUrl}
           tags={topic.tags}
           forumName={forum.name}
-          mediaTitle={topic.mediaTitle} />
+          mediaTitle={topic.mediaTitle}
+          ownerName={topic.owner.displayName}
+          contentType={forum.extra && forum.extra.contentType} />
         { topic.action.method &&
           <TopicAction
             topic={topic}

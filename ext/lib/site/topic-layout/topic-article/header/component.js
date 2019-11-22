@@ -47,9 +47,10 @@ export default class Header extends Component {
         )
       )
     }
-
+    
+    let authorData = this.props.contentType == 'llamado' ? this.props.ownerName : this.props.author
     let author = null
-    if (this.props.author) {
+    if (authorData) {
       let authorName
       if (this.props.authorUrl) {
         authorName = (
@@ -57,11 +58,11 @@ export default class Header extends Component {
             href={this.props.authorUrl}
             target='_blank'
             rel='noopener noreferrer'>
-            {this.props.author}
+            {authorData}
           </a>
         )
       } else {
-        authorName = this.props.author
+        authorName = authorData
       }
       author = (
         <h2 className='author'>{t('admin-topics-form.label.author')}:

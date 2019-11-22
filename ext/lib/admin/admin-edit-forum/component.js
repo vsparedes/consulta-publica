@@ -163,7 +163,7 @@ export default class EditForum extends Component {
                   <option value="" disabled>- Elija una opción -</option>
                   <option value="ejes">Ejes de consulta</option>
                   <option value="propuestas">Propuestas</option>
-                  <option value="llamado">Llamado</option>
+                  <option value="llamado">Convocatoria</option>
                 </select>
               </div>
             </fieldset>

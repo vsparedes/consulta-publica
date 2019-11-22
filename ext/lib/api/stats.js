@@ -24,7 +24,7 @@ app.get('/forum/:forumName',
     Forum
       .findOne({ $or:[ 
         { name: req.params.forumName, visibility: 'public', "extra.hidden": false },
-        { name: req.params.forumName, visibility: 'collaborative' }
+        { name: req.params.forumName, visibility: 'collaborative', "extra.hidden": false }
       ]})
       .populate('owner')
       .exec()

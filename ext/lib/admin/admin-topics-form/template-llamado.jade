@@ -42,6 +42,15 @@
               option(selected=tag.id === topicTag, value=tag.id)
                 = tag.name
         .form-group
+          label= t('admin-topics-form.label.tags')
+          - if (te('admin-topics-form.description.tags'))
+            span.help-text= t('admin-topics-form.description.tags')
+          div.tags-autocomplete
+          - if (forum.initialTags && forum.initialTags.length > 0)
+            span.help-text= t('admin-topics-form.description.forum-tags')
+            - each tag in forum.initialTags
+              button.btn.btn-default.btn-sm.forum-tag(data-value=tag, type='button', disabled=(topic.tags && !!~topic.tags.indexOf(tag)))= tag
+        .form-group
           label= t('admin-topics-form.label.summary')
           - if (te('admin-topics-form.description.summary'))
             span.help-text= t('admin-topics-form.description.summary')

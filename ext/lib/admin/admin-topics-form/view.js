@@ -56,7 +56,7 @@ export default class TopicForm extends FormView {
       locals.form.method = 'post'
       locals.form.forum = forum.id
     }
-    console.log(forum)
+    
     if (locals.contentType == 'llamado'){
       locals.form.title = forum.title
       super(templateLlamado, locals)

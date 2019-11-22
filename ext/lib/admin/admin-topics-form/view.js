@@ -39,33 +39,28 @@ export default class TopicForm extends FormView {
       moment: moment,
       forum,
       urlBuilder,
-      isLlamado: forum.extra.contentType == 'llamado'
+      contentType: forum.extra && forum.extra.contentType || null
     }
 
     if (topic) {
       locals.form.type = 'edit'
       locals.form.action = '/api/v2/topics/' + topic.id
-      if (locals.isLlamado)
-        locals.form.title = 'admin-topics-form.llamado.title.edit'
-      else
-        locals.form.title = 'admin-topics-form.title.edit'
+      locals.form.title = 'admin-topics-form.title.edit'
       locals.form.method = 'put'
       topic.body = serializer.toHTML(topic.clauses)
         .replace(/<a/g, '<a rel="noopener noreferer" target="_blank"')
     } else {
       locals.form.type = 'create'
       locals.form.action = '/api/v2/topics'
-      if (locals.isLlamado)
-        locals.form.title = 'admin-topics-form.llamado.title.create'
-      else
-        locals.form.title = 'admin-topics-form.title.create'
+      locals.form.title = 'admin-topics-form.title.create'
       locals.form.method = 'post'
       locals.form.forum = forum.id
     }
-    
-    if (locals.isLlamado)
+    console.log(forum)
+    if (locals.contentType == 'llamado'){
+      locals.form.title = forum.title
       super(templateLlamado, locals)
-    else
+    }else
       super(template, locals)
 
     this.topic = topic

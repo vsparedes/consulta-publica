@@ -56,6 +56,7 @@ export default class TopicForm extends FormView {
       locals.form.method = 'post'
       locals.form.forum = forum.id
     }
+    locals.form.sugerencia = forum.extra && forum.extra.sugerencia || ''
     
     if (locals.contentType == 'llamado'){
       locals.form.title = forum.title

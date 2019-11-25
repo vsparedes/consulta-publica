@@ -33,7 +33,12 @@ main.container
               select.input-group(name='contentType', value='ejes', validate='required')
                 option(value='ejes')= 'Ejes de consulta'
                 option(value='propuestas')= 'Propuestas'
-                option(value='llamado')= 'Convocatoria'
+                option(value='llamado')= t('forum.form.contentType.llamado')
+
+          fieldset.sugerencia
+            label= t('forum.form.sugerencia.label')
+            .form-group.clearfix
+              input(type='text', name='sugerencia', placeholder= t('forum.form.sugerencia.placeholder'), maxlength=300, validate='max-length:300')
 
           fieldset
             label.rich-summary= t('forum.form.rich.summary.label')

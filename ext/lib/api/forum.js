@@ -62,8 +62,10 @@ function createForum(req, res, next) {
     topicsAttrs: [attrPregunta]
   }
   
-  if (req.body.contentType == 'llamado')
+  if (req.body.contentType == 'llamado'){
     data.visibility = 'collaborative'
+    data.extra.sugerencia = req.body.sugerencia
+  }
   
   log('Trying to create forum with name: %s', data.name)
 

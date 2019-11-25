@@ -44,14 +44,20 @@ export default class TopicForm extends FormView {
 
     if (topic) {
       locals.form.type = 'edit'
-      locals.form.action = '/api/v2/topics/' + topic.id
+      if (locals.contentType != 'llamado')
+        locals.form.action = '/api/v2/topics/' + topic.id
+      else
+        locals.form.action = '/ext/api/topics-ext/llamado/' + topic.id
       locals.form.title = 'admin-topics-form.title.edit'
       locals.form.method = 'put'
       topic.body = serializer.toHTML(topic.clauses)
         .replace(/<a/g, '<a rel="noopener noreferer" target="_blank"')
     } else {
       locals.form.type = 'create'
-      locals.form.action = '/api/v2/topics'
+      if (locals.contentType != 'llamado')
+        locals.form.action = '/api/v2/topics'
+      else
+        locals.form.action = '/ext/api/topics-ext/llamado'
       locals.form.title = 'admin-topics-form.title.create'
       locals.form.method = 'post'
       locals.form.forum = forum.id
@@ -72,7 +78,8 @@ export default class TopicForm extends FormView {
 
     if (tags.length === 0) return
 
-    this.renderDateTimePickers()
+    if (this.find('.form-group.closingAt').length)
+      this.renderDateTimePickers()
     if (created) {
       this.messages([t('admin-topics-form.message.onsuccess')])
       created = false
@@ -98,7 +105,8 @@ export default class TopicForm extends FormView {
     this.bind('click', '.make-public', this.bound('onmakepublicclick'))
     this.bind('click', '.make-private', this.bound('onmakeprivateclick'))
     this.bind('click', '.delete-topic', this.bound('ondeletetopicclick'))
-    this.bind('click', '[data-clear-closing-at]', this.bound('onclearclosingat'))
+    if (this.find('.form-group.closingAt').length)
+      this.bind('click', '[data-clear-closing-at]', this.bound('onclearclosingat'))
     this.bind('change', '.method-input', this.bound('onmethodchange'))
     this.on('success', this.onsuccess)
 

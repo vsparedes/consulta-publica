@@ -30,12 +30,18 @@
           input(type='hidden', name='forum', value=form.forum)
         ul.form-messages
         .form-group
-          label= t('admin-topics-form.label.mediaTitle')
+          label= 'Título de la propuesta'
           - if (te('admin-topics-form.description.mediaTitle'))
             span.help-text= t('admin-topics-form.description.mediaTitle')
           input.form-control(type='text', maxlength='200', id='mediaTitle', name='mediaTitle', placeholder=t('admin-topics-form.label.mediaTitle'), value=topic.mediaTitle, validate='required')
+        .form-group.problema
+          label= '¿Qué  problema querés resolver?'
+          textarea.form-control(name='extra.problema')= topic.extra && topic.extra.problema
         .form-group
-          label= t('admin-topics-form.label.tag')
+          label= '¿Cuál es tu propuesta?'
+          textarea.form-control(name='body')= topic.body
+        .form-group
+          label= 'Elegí la categoría asociada a tu propuesta'
           - if (te('admin-topics-form.description.tag'))
             span.help-text= t('admin-topics-form.description.tag')
           select.form-control(name='tag', validate='required')
@@ -44,20 +50,15 @@
               option(selected=tag.id === topicTag, value=tag.id)
                 = tag.name
         .form-group
-          label= t('admin-topics-form.label.tags')
+          label= 'Elegí etiquetas de los temas relacionados a tu propuesta'
           - if (te('admin-topics-form.description.tags'))
-            span.help-text= t('admin-topics-form.description.tags')
+            span.help-text= 'Separarlos apretando ENTER o TAB'
           div.tags-autocomplete
           - if (forum.initialTags && forum.initialTags.length > 0)
-            span.help-text= t('admin-topics-form.description.forum-tags')
+            span.help-text= 'Separarlos apretando ENTER o TAB'
             - each tag in forum.initialTags
               button.btn.btn-default.btn-sm.forum-tag(data-value=tag, type='button', disabled=(topic.tags && !!~topic.tags.indexOf(tag)))= tag
-        .form-group
-          label= t('admin-topics-form.label.summary')
-          - if (te('admin-topics-form.description.summary'))
-            span.help-text= t('admin-topics-form.description.summary')
-          textarea.form-control(name='body')= topic.body
-        .form-group.closingAt
+        //.form-group.closingAt
           label= t('admin-topics-form.label.closingAt')
           - if (te('admin-topics-form.description.closingAt'))
             span.help-text= t('admin-topics-form.description.closingAt')
@@ -89,5 +90,12 @@
           div
             button.add-link.btn.btn-link(type='button')
               = '+ ' + t('admin-topics-form.button.add-link')
+              
+        .form-group
+          label= 'Subí una foto que represente tu propuesta'
+          - if (te('admin-topics-form.description.coverUrl'))
+            span.help-text= t('admin-topics-form.description.coverUrl')
+          input.form-control(type='text', maxlength='254', id='coverUrl', name='coverUrl', placeholder=t('admin-topics-form.placeholder.coverUrl'), value=topic.coverUrl, validate='url')
+        
         input.btn.btn-success.hide(type='submit', value=t('admin-topics-form.button.submit'))
     include commands-llamado

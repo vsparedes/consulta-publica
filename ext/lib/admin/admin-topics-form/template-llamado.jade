@@ -76,9 +76,7 @@
               i.icon-trash
 
         .form-group
-          label=t('admin-topics-form.label.resources')
-          - if (te('admin-topics-form.description.resources'))
-            span.help-text= t('admin-topics-form.description.resources')
+          label='Acá podés compartir archivos o enlaces de referencia'
           .topic-links
             - // create a disabled link to force empty array value
             input(type='hidden', name='links[][_id]', disabled)

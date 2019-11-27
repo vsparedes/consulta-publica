@@ -79,7 +79,7 @@ class CommentsForm extends Component {
     let id = user.state.value.id
     userStore.requestUserVerify(id).then((user) => {
       this.setState({ verifySent: true })
-      alert('¡Solicitud de verificación enviada!')
+      alert('¡Perfecto, te estaremos enviando un mail de verificación a tu casilla de correo!')
     })
   }
 

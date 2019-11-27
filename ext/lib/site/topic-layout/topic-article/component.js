@@ -111,7 +111,7 @@ class TopicArticle extends Component {
             userAttrs={userAttrs} />
         }
         {forum.extra && forum.extra.contentType == 'llamado' && 
-            <div>
+            <div className='llamado-content'>
               {topic.extra && topic.extra.problema && 
                 <div>
                   <h5 className="topic-article-content">Problema a resolver</h5>

@@ -112,8 +112,12 @@ class TopicArticle extends Component {
         }
         {forum.extra && forum.extra.contentType == 'llamado' && 
             <div>
-              <h5 className="topic-article-content">Problema a resolver</h5>
-              <Content clauses={[{markup: topic.extra.problema}]} />
+              {topic.extra && topic.extra.problema && 
+                <div>
+                  <h5 className="topic-article-content">Problema a resolver</h5>
+                  <Content clauses={[{markup: topic.extra.problema}]} />
+                </div> 
+              }
               <h5 className="topic-article-content">Propuesta</h5>
               <Content clauses={topic.clauses} />
             </div> 

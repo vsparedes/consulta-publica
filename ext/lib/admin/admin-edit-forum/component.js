@@ -19,6 +19,7 @@ export default class EditForum extends Component {
         owner: this.props.forum.extra.owner,
         ownerUrl: this.props.forum.extra.ownerUrl,
         contentType: this.props.forum.extra.contentType || '',
+        sugerencia: this.props.forum.extra.sugerencia
       },
       coverUrl: this.props.forum.coverUrl,
       updated: false
@@ -87,7 +88,7 @@ export default class EditForum extends Component {
       })
       .catch(console.error)
   }
-
+    
   render () {
     const {
       title,
@@ -102,6 +103,7 @@ export default class EditForum extends Component {
         ownerUrl,
         richSummary,
         contentType,
+        sugerencia
       }
     } = this.state
 
@@ -163,9 +165,24 @@ export default class EditForum extends Component {
                   <option value="" disabled>- Elija una opción -</option>
                   <option value="ejes">Ejes de consulta</option>
                   <option value="propuestas">Propuestas</option>
+                  <option value="llamado">Convocatoria</option>
                 </select>
               </div>
             </fieldset>
+            {contentType == 'llamado' &&
+              <fieldset>
+                <label>{t('forum.form.sugerencia.label')}</label>
+                <div className='form-group clearfix sugerencia'>
+                  <input
+                    type='text'
+                    name='sugerencia'
+                    placeholder={t('forum.form.sugerencia.placeholder')}
+                    maxLength='300'
+                    value={sugerencia}
+                    onChange={this.handleChangeExtra('sugerencia')} />
+                </div>
+              </fieldset>
+            }
             <fieldset>
               <label className='rich-summary'>{t('forum.form.rich.summary.label')}</label>
               <div className='form-group clearfix summary'>

@@ -19,7 +19,7 @@
       .form-group
         label #{t('settings.badge')}
         br
-        label.help-text #{'Las etiquetas permiten poner anotaciones en los usuarios.'}
+        label.help-text='La etiqueta se visualiza debajo del nombre del usuario al realizar comentarios.'
         input.form-control(type='text', name='badge', tabindex=2, placeholder=t(''), value='', validate='required', maxlength=50)
       .form-group
         button#submit-badge.btn.btn-success.btn-block.btn-lg(tabindex=4)=t('settings.user-badges.save-badge')

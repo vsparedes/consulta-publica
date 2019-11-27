@@ -22,7 +22,10 @@ const app = module.exports = express.Router()
 app.get('/forum/:forumName',
   function getAllForums(req, res, next) {
     Forum
-      .findOne({ name: req.params.forumName, visibility: 'public', "extra.hidden": false })
+      .findOne({ $or:[ 
+        { name: req.params.forumName, visibility: 'public', "extra.hidden": false },
+        { name: req.params.forumName, visibility: 'collaborative', "extra.hidden": false }
+      ]})
       .populate('owner')
       .exec()
       .then((forum) => {

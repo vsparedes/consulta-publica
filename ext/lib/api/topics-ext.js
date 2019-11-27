@@ -35,8 +35,8 @@ function parseUpdateableKeys (req, res, next) {
 
   const updatable = updatableKeys.concat(custom)
   
-  // req.body['action.method'] viene siempre vacío, por ende:
-  req.body['action.results'] = []
+  // req.body['action.method'] va a ser "cause", hardcodeado en el post, por ende:
+  req.body['action.results'] = [{ value: 'support', percentage: 0, votes: 0 }]
   
   const attrs = filter(req.body, (v, k) => updatable.includes(k))
 
@@ -72,6 +72,7 @@ function parseUpdateableKeys (req, res, next) {
   next()
 }
 
+// Crear llamado
 app.post('/llamado',
 middlewares.users.restrict,
 middlewares.forums.findFromBody,
@@ -80,6 +81,9 @@ middlewares.forums.privileges.canCreateTopics,
 parseUpdateableKeys,
 middlewares.topics.autoPublish,
 function postTopics (req, res, next) {  
+  // esto hace que aparezca el botón "<3 Apoyar"
+  req.keysToUpdate['action.method'] = 'cause'
+  
   req.keysToUpdate.extra = {}
   if (req.keysToUpdate['extra.problema'])
     req.keysToUpdate.extra.problema = req.keysToUpdate['extra.problema']
@@ -100,6 +104,7 @@ function postTopics (req, res, next) {
   }).catch(next)
 })
 
+// Editar llamado
 app.put('/llamado/:id',
 middlewares.users.restrict,
 middlewares.topics.findById,

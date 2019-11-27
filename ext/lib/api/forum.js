@@ -57,6 +57,8 @@ function createForum(req, res, next) {
     extra: {
       richSummary: req.body.richSummary,
       contentType: req.body.contentType,
+      palabrasCierre: req.body.palabrasCierre,
+      linkCierre: req.body.linkCierre,
       hidden: false
     },
     topicsAttrs: [attrPregunta]

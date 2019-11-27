@@ -81,7 +81,7 @@ class TopicArticle extends Component {
         </div>
       )
     }
-
+    
     return (
       <div className={`topic-article-wrapper ${this.state.nodes.length >= 0 ? 'large' : 'small'}`}>
 
@@ -110,7 +110,17 @@ class TopicArticle extends Component {
             topic={topic}
             userAttrs={userAttrs} />
         }
-        {topic.clauses && <Content clauses={topic.clauses} />}
+        {forum.extra && forum.extra.contentType == 'llamado' && 
+            <div>
+              <h5 className="topic-article-content">Problema a resolver</h5>
+              <Content clauses={[{markup: topic.extra.problema}]} />
+              <h5 className="topic-article-content">Propuesta</h5>
+              <Content clauses={topic.clauses} />
+            </div> 
+          || topic.clauses && 
+            <Content clauses={topic.clauses} />
+          
+        }
         {
           topic.links && (
             <Footer

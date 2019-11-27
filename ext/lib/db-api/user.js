@@ -240,10 +240,8 @@ exports.requestVerify = function requestVerify (id, fn) {
   }
   
   this.get(id, function (err, user) {
-    const {protocol, host, publicPort} = config
-    if (publicPort == 80 || publicPort == 443)
-      publicPort = null
-    const verifyConfigUrl = `${protocol}://${host}${publicPort?':'+publicPort:''}${urlBuilder.for('settings.user-badges')}`
+    const {protocol, host} = config
+    const verifyConfigUrl = `${protocol}://${host}${urlBuilder.for('settings.user-badges')}`
     
     let mailSubject = 'Consulta Pública - Solicitud de verificación de cuenta'
     let mailBodyHtml = `

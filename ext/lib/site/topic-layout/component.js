@@ -26,7 +26,12 @@ class TopicLayout extends Component {
       forumStore.findOneByName(this.props.params.forum),
       topicStore.findOne(this.props.params.id)
     ]).then(([forum, topic]) => {
+      
+      if (forum.extra && forum.extra.contentType == 'llamado')
+        topic.closingAt = forum.extra.closingAt
+      
       this.setState({ forum, topic })
+      
     }).catch((err) => {
       if (err.status === 404) return browserHistory.push('/404')
       throw err

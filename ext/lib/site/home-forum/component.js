@@ -102,6 +102,8 @@ export default class HomeForum extends Component {
     
     const isClosed = forum.extra.closingAt && new Date(forum.extra.closingAt) < new Date()
     
+    const tipoConsulta = forum.extra.contentType === 'llamado' && 'convocatoria' || 'consulta'
+    
     return (
       <div className='ext-forum-home'>
         <section
@@ -160,6 +162,31 @@ export default class HomeForum extends Component {
                   <strong>Autor:</strong>
                 </span>
                 { author }
+              </div>
+            </div>
+          </div>
+        }
+        { isClosed && 
+          <div className='container forum-description'>
+            <div className='row'>
+              <div className='col-md-8 offset-md-2'>
+                <div className="consulta-cerrada">
+                  <img className="lock-icon" src='/ext/lib/boot/lock.png' />
+                  <h5>La {tipoConsulta} se encuentra cerrada</h5>
+                  {forum.extra.palabrasCierre && 
+                    <p>{forum.extra.palabrasCierre}</p>
+                  }
+                  {forum.extra.linkCierre && 
+                    <a
+                      className='btn btn-primary btn-informe-cierre'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      href={forum.extra.linkCierre} >
+                      Ver informe de cierre
+                    </a>
+                  }
+                  <p>La {tipoConsulta} ya no está abierta a votaciones o aportes.</p>
+                </div>
               </div>
             </div>
           </div>

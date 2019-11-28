@@ -72,7 +72,7 @@ function parseUpdateableKeys (req, res, next) {
   next()
 }
 
-// Crear llamado
+// Crear propuesta ciudadana
 app.post('/llamado',
 middlewares.users.restrict,
 middlewares.forums.findFromBody,
@@ -104,7 +104,7 @@ function postTopics (req, res, next) {
   }).catch(next)
 })
 
-// Editar llamado
+// Editar propuesta ciudadana
 app.put('/llamado/:id',
 middlewares.users.restrict,
 middlewares.topics.findById,

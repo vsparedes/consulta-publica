@@ -281,7 +281,6 @@ exports.verifyUser = function verifyUser (id) {
         log('Verify User OK')
         const {protocol, host} = config
         const homeUrl = `${protocol}://${host}`
-        log(config)
       
         let mailSubject = 'Consulta Pública - Cuenta verificada'
         let mailBodyHtml = `

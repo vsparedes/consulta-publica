@@ -85,7 +85,7 @@ class CommentsForm extends Component {
 
   render () {
     const { topic, user } = this.props
-
+    
     if (user.state.pending) return null
 
     if (user.state.fulfilled && !topic.privileges.canComment) {
@@ -96,7 +96,9 @@ class CommentsForm extends Component {
 
     const userAttrs = user.state.value
     const focusedClass = this.state.focused ? 'focused' : ''
-
+      
+    const cantAskVerify = this.state.verifySent || userAttrs.extra && (userAttrs.extra.verificationRequest || userAttrs.extra.verified)
+      
     return (
       <form
         onSubmit={this.handleSubmit}
@@ -131,10 +133,10 @@ class CommentsForm extends Component {
               {t('comments.create.publish')}
             </button>
             <button
-              className={'btn btn-sm btn-outline-' + (this.state.verifySent ? 'secondary' : 'info')}
+              className={'btn btn-sm btn-outline-' + (cantAskVerify ? 'secondary' : 'info')}
               onClick={this.verifyClick}
               type='button'
-              disabled={this.state.verifySent}>
+              disabled={cantAskVerify}>
               {t('comments.create.verify')}
             </button>
             {this.state.error && (

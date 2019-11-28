@@ -13,6 +13,7 @@ var models = require('lib/models')
 var User = models.User
 
 const dbApi = require('../db-api')
+const dbApiOriginal = require('lib/db-api')
 
 const app = module.exports = express.Router()
 
@@ -28,14 +29,17 @@ function requestUserVerify(req, res, next) {
   log('Sending user verify request for id %s', verifyId)
   
   dbApi.user.requestVerify(verifyId, function (err, user) {
-    if(err) next(err)
+    if(err)
+      next(err)
     log('User verify request sent successfully for id %s', user.id)
-    return res.status(200).json({
-      status: 200,
-      results: {
-        user: user
-      }
-    })
+    dbApi.user.editExtra(fromId, { 'extra.verificationRequest': Date.now() }).then((user) => {
+      return res.status(200).json({
+        status: 200,
+        results: {
+          user: user
+        }
+      })
+    }).catch(next)
   })
 })
 

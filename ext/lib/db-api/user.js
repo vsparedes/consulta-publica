@@ -305,3 +305,23 @@ exports.verifyUser = function verifyUser (id) {
       })
   })
 }
+
+exports.editExtra = function edit (id, extras) {
+  log('Updating extra fields for user %s', id)
+  
+  return new Promise((resolve, reject) => {    
+    Object.keys(extras).forEach((key) => {
+      if (!key.startsWith('extra.'))
+        return reject('Can\'t update non-extra fields')
+    })
+
+    User.findOneAndUpdate({_id : id}, { $set: extras }, function (err, user) {
+      if (err) {
+        log('Update of user\'s extra fields failed: %s', err)
+        return reject(err)
+      }
+      resolve(user)
+    })
+    
+  })
+}

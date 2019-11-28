@@ -101,9 +101,12 @@ export default class ForumForm extends FormView {
   }
 
   contentTypeChanged () {
-    if (this.selectContentType.val() == 'llamado')
+    if (this.selectContentType.val() == 'llamado'){
       this.fieldsetSugerencia.css('display', 'block')
-    else
+      this.find('input[name=closingAt]').attr('validate', 'required')
+    }else{
       this.fieldsetSugerencia.css('display', 'none')
+      this.find('input[name=closingAt]').attr('validate', null)
+    }
   }
 }

@@ -50,6 +50,11 @@ main.container
             .form-group.clearfix.summary
               input(type='text', name='cover', placeholder= t('admin-topics-form.placeholder.cover'), validate='url')
 
+          fieldset
+            label= 'Fecha de cierre'
+            .form-group.clearfix.summary
+              input(type='date', name='closingAt', maxlength=12, validate='max-length:12')
+
           fieldset.palabrasCierre
             label= t('forum.form.palabrasCierre.label')
             .form-group.clearfix

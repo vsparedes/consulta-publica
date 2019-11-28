@@ -96,6 +96,8 @@ function parseUpdateableKeys (req, res, next) {
   next()
 },
 function edit (req, res, next) {
+  if (req.keysToUpdate.extra && req.keysToUpdate.extra.contentType == 'llamado')
+    req.keysToUpdate.visibility = 'collaborative'
   apiV2.forums
     .edit({ _id: req.params.id }, req.keysToUpdate)
     .then((forum) => {

@@ -99,7 +99,9 @@ export default class HomeForum extends Component {
       }
       author = <span>{ authorName }</span>
     }
-
+    
+    const isClosed = forum.extra.closingAt && new Date(forum.extra.closingAt) < new Date()
+    
     return (
       <div className='ext-forum-home'>
         <section
@@ -144,7 +146,7 @@ export default class HomeForum extends Component {
                 <a
                   className='btn btn-primary'
                   onClick={this.handleScroll} >
-                  Proponé
+                   { !isClosed && 'Proponé' || 'Conocé las propuestas' }
                 </a>
               }
             </div>
@@ -169,17 +171,16 @@ export default class HomeForum extends Component {
             {forum.summary}
           </div>
         }
-        <ForumStat forum={forum}/>
-        { forum.extra.contentType === 'llamado' && 
+        { !isClosed && forum.extra.contentType === 'llamado' && 
          <div className='container cargar-propuesta' id='anchor'>
-          <h5>Podés participar subiendo tu propuesta a esta consulta</h5>
           <a
             className='btn btn-primary'
             onClick={this.handleCargarPropuesta} >
-            Cargar propuesta
+            Subí tu propuesta
           </a>
          </div>
         }
+        <ForumStat forum={forum}/>
         <div className='container topics-container' >
           {this.state.topics.length > 0 && (forum.extra.contentType === 'ejes' || forum.extra.contentType === undefined) &&
             <h5>{`${this.state.topics.length} ${this.state.topics.length > 1 ? 'ejes comprenden' : 'eje comprende'} esta consulta`}</h5>
@@ -188,7 +189,7 @@ export default class HomeForum extends Component {
             <h5>{`${this.state.topics.length} ${this.state.topics.length > 1 ? 'propuestas comprenden' : 'propuesta comprende'} esta consulta`}</h5>
           }
           {this.state.topics.length > 0 && forum.extra.contentType === 'llamado' &&
-            <h5>Conocé las propuestas subidas y comentá</h5>
+            <h5 id={!isClosed && forum.extra.contentType === 'llamado' ? '' : 'anchor'}>Hay {this.state.topics.length} propuestas en esta convocatoria</h5>
           }
           <div className='topics-card-wrapper'>
             {this.state.topics

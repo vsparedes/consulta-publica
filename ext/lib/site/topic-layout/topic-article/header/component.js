@@ -24,8 +24,12 @@ export default class Header extends Component {
       )
     }
 
-    var closingAt
-    if (!this.props.closed && this.props.closingAt) {
+    var closingAt, isClosed
+    
+    if (this.props.closingAt && new Date(this.props.closingAt) < new Date())
+      isClosed = true
+      
+    if (!isClosed && !this.props.closed && this.props.closingAt) {
       closingAt = (
         <div className="alert alert-success" role="alert">
         <span className={ this.props.closed ? 'icon-lock' : 'icon-lock-open'} style={{marginRight: '5px'}}></span>
@@ -35,9 +39,8 @@ export default class Header extends Component {
 
       )
     }
-
-    var isClosed
-    if (this.props.closed){
+    
+    if (isClosed || this.props.closed){
       isClosed = (
         (
           <div className="alert alert-danger" role="alert">

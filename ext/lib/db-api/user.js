@@ -279,9 +279,15 @@ exports.verifyUser = function verifyUser (id) {
           return reject(err)
         }
         log('Verify User OK')
+        const {protocol, host} = config
+        const homeUrl = `${protocol}://${host}`
+        log(config)
       
         let mailSubject = 'Consulta Pública - Cuenta verificada'
-        let mailBodyHtml = `<p>¡Su cuenta ha sido verificada con éxito!</p>`
+        let mailBodyHtml = `
+          <p>¡Su cuenta ha sido verificada con éxito!</p>
+          <p>Puede volver a Consulta Pública haciendo click <a href="${homeUrl}">acá</a></p>
+        `
         
         // NOTA: el mailer puede enviar "bien" el mail pero el smtp server no, entonces nunca sale el mail y no nos enteramos
         // Eso solo se puede ver en los logs de smtp server

@@ -210,10 +210,10 @@ export default class HomeForum extends Component {
         <ForumStat forum={forum}/>
         <div className='container topics-container' >
           {this.state.topics.length > 0 && (forum.extra.contentType === 'ejes' || forum.extra.contentType === undefined) &&
-            <h5>{`${this.state.topics.length} ${this.state.topics.length > 1 ? 'ejes comprenden' : 'eje comprende'} esta consulta`}</h5>
+            <h5 id='anchor'>{`${this.state.topics.length} ${this.state.topics.length > 1 ? 'ejes comprenden' : 'eje comprende'} esta consulta`}</h5>
           }
           {this.state.topics.length > 0 && forum.extra.contentType === 'propuestas' &&
-            <h5>{`${this.state.topics.length} ${this.state.topics.length > 1 ? 'propuestas comprenden' : 'propuesta comprende'} esta consulta`}</h5>
+            <h5 id='anchor'>{`${this.state.topics.length} ${this.state.topics.length > 1 ? 'propuestas comprenden' : 'propuesta comprende'} esta consulta`}</h5>
           }
           {this.state.topics.length > 0 && forum.extra.contentType === 'llamado' &&
             <h5 id={!isClosed && forum.extra.contentType === 'llamado' ? '' : 'anchor'}>Hay {this.state.topics.length} propuestas en esta convocatoria</h5>

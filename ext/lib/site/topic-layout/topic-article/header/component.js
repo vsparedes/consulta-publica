@@ -24,8 +24,12 @@ export default class Header extends Component {
       )
     }
 
-    var closingAt
-    if (!this.props.closed && this.props.closingAt) {
+    var closingAt, isClosed
+    
+    if (this.props.closingAt && new Date(this.props.closingAt) < new Date())
+      isClosed = true
+      
+    if (!isClosed && !this.props.closed && this.props.closingAt) {
       closingAt = (
         <div className="alert alert-success" role="alert">
         <span className={ this.props.closed ? 'icon-lock' : 'icon-lock-open'} style={{marginRight: '5px'}}></span>
@@ -35,9 +39,8 @@ export default class Header extends Component {
 
       )
     }
-
-    var isClosed
-    if (this.props.closed){
+    
+    if (isClosed || this.props.closed){
       isClosed = (
         (
           <div className="alert alert-danger" role="alert">
@@ -47,9 +50,10 @@ export default class Header extends Component {
         )
       )
     }
-
+    
+    let authorData = this.props.contentType == 'llamado' ? this.props.ownerName : this.props.author
     let author = null
-    if (this.props.author) {
+    if (authorData) {
       let authorName
       if (this.props.authorUrl) {
         authorName = (
@@ -57,11 +61,11 @@ export default class Header extends Component {
             href={this.props.authorUrl}
             target='_blank'
             rel='noopener noreferrer'>
-            {this.props.author}
+            {authorData}
           </a>
         )
       } else {
-        authorName = this.props.author
+        authorName = authorData
       }
       author = (
         <h2 className='author'>{t('admin-topics-form.label.author')}:

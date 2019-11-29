@@ -23,9 +23,12 @@
         .poll-option-label
           margin-left: 10px
           font-weight: 300
-          position: absolute
+          position: static
           top: 7
           left: 25
+        .circle
+          position: static
+          display: inline-block
         .icon-check
           background-color: #3995D6
           z-index:-1
@@ -35,28 +38,28 @@
         display: flex
         align-items: center
         width: 413px
-        height: 26px
+        height: auto
         border-radius: 19px
         margin-left: 0px
         margin-bottom: 15px
         background-color: #E8E8E8
-        @media screen and (max-width: 600px)
+        @media screen and (max-width: 631px)
           margin-left: 0
           width: 300px
-        @media screen and (max-width: 600px)
+        @media screen and (max-width: 631px)
           width: 100%
 
         .results-bar 
           border-radius: 19px
           background-color: #BCDDF2
         .poll-results
-          margin-right: -80px
           font-weight: 400
           font-size: 20px
           color: #000
           text-align: center
-          @media screen and (max-width: 490px)
-            margin-right: 0
+          margin-right: 0
+          @media (min-width: 632px)
+            margin-right: -80px
         .poll-option-label
           top: 4
           font-family: 'Roboto', sans-serif

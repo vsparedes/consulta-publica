@@ -19,6 +19,9 @@ export default class EditForum extends Component {
         owner: this.props.forum.extra.owner,
         ownerUrl: this.props.forum.extra.ownerUrl,
         contentType: this.props.forum.extra.contentType || '',
+        sugerencia: this.props.forum.extra.sugerencia,
+        palabrasCierre: this.props.forum.extra.palabrasCierre,
+        linkCierre: this.props.forum.extra.linkCierre
       },
       coverUrl: this.props.forum.coverUrl,
       updated: false
@@ -87,7 +90,7 @@ export default class EditForum extends Component {
       })
       .catch(console.error)
   }
-
+    
   render () {
     const {
       title,
@@ -102,6 +105,9 @@ export default class EditForum extends Component {
         ownerUrl,
         richSummary,
         contentType,
+        sugerencia,
+        palabrasCierre,
+        linkCierre
       }
     } = this.state
 
@@ -163,9 +169,24 @@ export default class EditForum extends Component {
                   <option value="" disabled>- Elija una opción -</option>
                   <option value="ejes">Ejes de consulta</option>
                   <option value="propuestas">Propuestas</option>
+                  <option value="llamado">Convocatoria</option>
                 </select>
               </div>
             </fieldset>
+            {contentType == 'llamado' &&
+              <fieldset>
+                <label>{t('forum.form.sugerencia.label')}</label>
+                <div className='form-group clearfix sugerencia'>
+                  <input
+                    type='text'
+                    name='sugerencia'
+                    placeholder={t('forum.form.sugerencia.placeholder')}
+                    maxLength='300'
+                    value={sugerencia}
+                    onChange={this.handleChangeExtra('sugerencia')} />
+                </div>
+              </fieldset>
+            }
             <fieldset>
               <label className='rich-summary'>{t('forum.form.rich.summary.label')}</label>
               <div className='form-group clearfix summary'>
@@ -190,9 +211,32 @@ export default class EditForum extends Component {
               <label>Fecha de cierre</label>
               <div className='form-group clearfix'>
                 <input
+                  name='closingAt'
                   type='date'
-                  value={closingAt}
+                  value={closingAt.substr(0,10)}
                   onChange={this.handleChangeExtra('closingAt')} />
+              </div>
+            </fieldset>
+            <fieldset>
+              <label class="rich-summary">{t('forum.form.palabrasCierre.label')}</label>
+              <div className='form-group clearfix palabrasCierre'>
+                <textarea
+                  name='palabrasCierre'
+                  value={palabrasCierre}
+                  onChange={this.handleChangeExtra('palabrasCierre')}
+                  maxLength='500'
+                >
+                </textarea>
+              </div>
+            </fieldset>
+            <fieldset>
+              <label>{t('forum.form.linkCierre.label')}</label>
+              <div className='form-group clearfix summary'>
+                <input
+                  type='text'
+                  placeholder={t('forum.form.linkCierre.placeholder')}
+                  value={linkCierre}
+                  onChange={this.handleChangeExtra('linkCierre')} />
               </div>
             </fieldset>
             <fieldset>

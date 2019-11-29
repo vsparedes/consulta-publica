@@ -56,11 +56,20 @@ function createForum(req, res, next) {
     permissions: req.body.permissions,
     extra: {
       richSummary: req.body.richSummary,
+      closingAt: req.body.closingAt,
+      contentType: req.body.contentType,
+      palabrasCierre: req.body.palabrasCierre,
+      linkCierre: req.body.linkCierre,
       hidden: false
     },
     topicsAttrs: [attrPregunta]
   }
-
+  
+  if (req.body.contentType == 'llamado'){
+    data.visibility = 'collaborative'
+    data.extra.sugerencia = req.body.sugerencia
+  }
+  
   log('Trying to create forum with name: %s', data.name)
 
   api.forum.create(data, function (err, forum) {
@@ -87,6 +96,8 @@ function parseUpdateableKeys (req, res, next) {
   next()
 },
 function edit (req, res, next) {
+  if (req.keysToUpdate.extra && req.keysToUpdate.extra.contentType == 'llamado')
+    req.keysToUpdate.visibility = 'collaborative'
   apiV2.forums
     .edit({ _id: req.params.id }, req.keysToUpdate)
     .then((forum) => {

@@ -36,8 +36,8 @@ services:
       # - STAFF=hola@miemail.com,usuario@otroemail.com,otrousuario@nuevoemail.com
       - STAFF=hola@miemail.com
       # Logos
-      - ORGANIZATION_EMAIL=miconsultapublica@midominio.com.ar
-      - ORGANIZATION_NAME="Mi Consulta Pública"
+      - LOGO=/ext/lib/site/home-multiforum/logo-header.svg \
+      - LOGO_MOBILE=/ext/lib/site/home-multiforum/logo-header.svg \
       # Organizacion
       - ORGANIZATION_EMAIL=miconsultapublica@midominio.com.ar
       - ORGANIZATION_NAME="Mi Consulta Pública"
@@ -52,6 +52,8 @@ services:
       - NOTIFICATIONS_MAILER_EMAIL=miconsultapublica@midominio.com
       - NOTIFICATIONS_MAILER_NAME="Mi consulta ṕública"
       - NOTIFICATIONS_NODEMAILER={"host:"xxxxx.smtp.com","port":465,"secure":true,"auth":{"user":"xxxxxxxx","pass":"xxxxxxx"}} #Cambiar
+      # El mail del que recibe los pedidos de verificación de cuentas
+      - VERIFY_USER_REQUEST_EMAIL=miadminconsultapublica@midominio.com
       # Requerido: Genere un token para JWT
       - JWT_SECRET= #Cambiar
       # Si desea activar Mi Argentina, descomente los siguientes puntos
@@ -89,8 +91,9 @@ services:
 ##### Notas
 * Es muy importante que en `STAFF` agregues el email del admin o el de los administradores.
 * Por defecto, tal com esta en el docker-compose, está en el puerto 3000. Puede cambiar el puerto el cual se expone la aplicación (Ej: `3000:9999`)
+* Podés comentar las variables `NOTIFICATION_*` si todavía no tenés un servidor de correo definido.
 * Si se prefiere conectar a una base de dato local, fuera del entorno, vea el apartado [Conectar a una base de datos mongo local](#local-mongo)
-* Podes configurar DemocracyOS con cualquiera de las variables de entorno listadas acá: http://docs.democracyos.org/configuration.html
+* Podés configurar DemocracyOS con cualquiera de las variables de entorno listadas acá: http://docs.democracyos.org/configuration.html
 * El puerto `27017` está expuesto para que puedas administrar la base de datos con algún cliente de MongoDB, por ejemplo con [Robomongo](https://robomongo.org/).
 * Todas las vistas personalizadas para Consulta Pública se encuentran en [`/ext`](ext). Siguiendo el mismo patrón de carpetas que [DemocracyOS/democracyos](https://github.com/DemocracyOS/democracyos).
 
@@ -174,3 +177,30 @@ Por ultimo debemos comentar el servicio de mongo, para que no se construya el co
   #   volumes:
   #     - ./tmp/db:/data/db
 ```
+
+## Conectar a un servidor SMTP local
+
+Para esto podemos usar la imagen [namshi/smtp](https://hub.docker.com/r/namshi/smtp).
+
+Por ejemplo, si usamos una cuenta de Gmail de prueba, agregar en su compose:
+
+```yaml
+  mailserver:
+    image: namshi/smtp
+    environment:
+      - GMAIL_USER=mi-usuario@gmail.com
+      - GMAIL_PASSWORD=mi-contraseña-que-no-debo-publicar
+```
+
+Posteriormente, cambiar las variables de entorno correspondientes del contenedor `app`:
+
+```yaml
+      - NOTIFICATIONS_MAILER_EMAIL=mi-usuario@gmail.com
+      - NOTIFICATIONS_NODEMAILER={"host":"mailserver","port":25,"secure":false}
+ ```
+ 
+ Notar que si bien la conexión a este servidor SMTP no está cifrada, la conexión del servidor SMTP a Gmail sí lo está.
+  
+## Extendiendo los modelos de la BBDD o su API
+
+Para hacer esto debes copiar los archivos originales de DoS y agregarlos en la carpeta `dos-overrides`, bajo la misma ruta. Posteriormente incluírlos en `volumes` en el `docker-compose.yml`.

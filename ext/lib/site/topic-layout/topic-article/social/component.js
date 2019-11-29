@@ -10,6 +10,10 @@ export default ({ topic }) => {
   const twitterText = encodeURIComponent(
     config.tweetText ? t(config.tweetText, { topic }) : mediaTitle
   )
+  
+  const preventClickBehind = e => {
+    e.stopPropagation()
+  }
 
   return (
     <div className='topic-article-content topic-social'>
@@ -27,11 +31,13 @@ export default ({ topic }) => {
           href={`http://www.facebook.com/sharer.php?u=${socialLinksUrl}`}
           target='_blank'
           rel='noopener noreferrer'
+          onClick={preventClickBehind}
           className='icon-social-facebook' />
         <a
           href={`http://twitter.com/share?text=${twitterText}&url=${socialLinksUrl}`}
           target='_blank'
           rel='noopener noreferrer'
+          onClick={preventClickBehind}
           className='icon-social-twitter' />
       </div>
     </div>

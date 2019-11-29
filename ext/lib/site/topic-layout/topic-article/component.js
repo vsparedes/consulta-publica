@@ -81,7 +81,7 @@ class TopicArticle extends Component {
         </div>
       )
     }
-
+    
     return (
       <div className={`topic-article-wrapper ${this.state.nodes.length >= 0 ? 'large' : 'small'}`}>
 
@@ -102,13 +102,29 @@ class TopicArticle extends Component {
           authorUrl={topic.authorUrl}
           tags={topic.tags}
           forumName={forum.name}
-          mediaTitle={topic.mediaTitle} />
+          mediaTitle={topic.mediaTitle}
+          ownerName={topic.owner.displayName}
+          contentType={forum.extra && forum.extra.contentType} />
         { topic.action.method &&
           <TopicAction
             topic={topic}
             userAttrs={userAttrs} />
         }
-        {topic.clauses && <Content clauses={topic.clauses} />}
+        {forum.extra && forum.extra.contentType == 'llamado' && 
+            <div className='llamado-content'>
+              {topic.extra && topic.extra.problema && 
+                <div>
+                  <h5 className="topic-article-content">Problema a resolver</h5>
+                  <Content clauses={[{markup: topic.extra.problema}]} />
+                </div> 
+              }
+              <h5 className="topic-article-content">Propuesta</h5>
+              <Content clauses={topic.clauses} />
+            </div> 
+          || topic.clauses && 
+            <Content clauses={topic.clauses} />
+          
+        }
         {
           topic.links && (
             <Footer

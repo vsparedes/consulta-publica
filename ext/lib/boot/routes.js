@@ -12,4 +12,7 @@ module.exports = function () {
   urlBuilder.register('settings.notifications', '/ajustes/notificaciones')
   urlBuilder.register('settings.forums', '/ajustes/administrar')
   urlBuilder.register('settings.user-badges', '/ajustes/user-badges')
+
+  urlBuilder.register('user-verify', '/user-verify')
+  urlBuilder.register('topics-ext', '/topics-ext')
 }

@@ -30,6 +30,7 @@ class HomeMultiForum extends Component {
       .then((forums) => {
         this.setState({
           forums,
+          // las páginas son de a 3 (definido en ext/lib/api/filter.js), entonces si devuelve 3, tal vez hay más
           showMore: forums.length === 3
         })
       })
@@ -63,7 +64,7 @@ class HomeMultiForum extends Component {
         this.setState({
           page: this.state.page + 1,
           forums: [...this.state.forums, ...forums],
-          showMore: forums.length === 10
+          showMore: forums.length === 3
         });
       })
       .catch(console.error)
@@ -200,9 +201,10 @@ class HomeMultiForum extends Component {
               </li></ul>
             </div>
           </div>
-          {!forums.length && <h3 className="no-result">No hay resultados</h3>}
 
           <Search />
+
+          {!forums.length && <h3 className="no-result content-center">No hay resultados</h3>}
 
           {!!forums.length && forums.map((forum, key) => (
             <ForumContainer forum={forum} key={forum.id} />
@@ -210,7 +212,7 @@ class HomeMultiForum extends Component {
           {!!forums.length && showMore &&
             <div className='row content-center'>
               <button className="btn btn-active show-more" onClick={this.handleMoreClick}>
-                Cargar mas consultas
+                Cargar más consultas
               </button>
             </div>
           }

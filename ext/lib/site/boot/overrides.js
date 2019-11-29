@@ -15,9 +15,17 @@ import HelpExt from 'ext/lib/site/help/component'
 import * as SignIn from 'lib/site/sign-in/component'
 import SignInExt from 'ext/lib/site/sign-in/component'
 
+import * as CommentsForm from 'lib/site/topic-layout/topic-article/comments/form/component'
+import CommentsFormExt from 'ext/lib/site/topic-layout/topic-article/comments/form/component'
+
+import * as ReplyHeader from 'lib/site/topic-layout/topic-article/comments/list/comment/replies/list/header/component'
+import ReplyHeaderExt from 'ext/lib/site/topic-layout/topic-article/comments/list/comment/replies/list/header/component'
+
 
 HomeForum.default = HomeForumExt
 HomeMultiForum.default = HomeMultiForumExt
 TopicLayout.default = TopicLayoutExt
 Help.default = HelpExt
 SignIn.default = SignInExt
+CommentsForm.default = CommentsFormExt
+ReplyHeader.default = ReplyHeaderExt

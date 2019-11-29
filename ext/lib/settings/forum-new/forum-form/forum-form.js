@@ -24,6 +24,11 @@ export default class ForumForm extends FormView {
     const richSummary = this.find('textarea[name=richSummary]')
     this.richtext = new Richtext(richSummary)
 
+    //const inputSugerencia = this.find('input[name=sugerencia]')
+    this.fieldsetSugerencia = this.find('fieldset.sugerencia')
+    this.selectContentType = this.find('select[name=contentType]')
+    this.selectContentType.on('change', this.bound('contentTypeChanged'))
+    this.bound('contentTypeChanged')()
   }
 
   switchOn () {
@@ -93,5 +98,15 @@ export default class ForumForm extends FormView {
     this.disabled = false
     this.form.attr('disabled', null)
     this.find('button').attr('disabled', null)
+  }
+
+  contentTypeChanged () {
+    if (this.selectContentType.val() == 'llamado'){
+      this.fieldsetSugerencia.css('display', 'block')
+      this.find('input[name=closingAt]').attr('validate', 'required')
+    }else{
+      this.fieldsetSugerencia.css('display', 'none')
+      this.find('input[name=closingAt]').attr('validate', null)
+    }
   }
 }

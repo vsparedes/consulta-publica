@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { browserHistory, Link } from 'react-router'
 import Jump from 'jump.js'
+import urlBuilder from 'lib/url-builder'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
 import Footer from 'ext/lib/site/footer/component'
@@ -31,6 +32,29 @@ export default class HomeForum extends Component {
         ])
       })
       .then(([forum, [ topics, pagination ]]) => {
+        // ordenamos topics por abiertos y cerrados, y por fechas de cierre
+        // mismo sort utilizado en cards-slider
+        topics = topics.sort((a,b) => {  
+          // si uno está abierto y el otro cerrado, ordenar por abierto
+          if (a.closed && !b.closed)
+            return 1
+          if (!a.closed && b.closed)
+            return -1  
+          //// si los dos están abiertos o los dos cerrados
+          // si los dos tienen fecha de cierre, ordenar por eso
+          if (a.closingAt && b.closingAt)
+            if (a.closed && b.closed)
+              return new Date(a.closingAt) < new Date(b.closingAt) ? 1 : -1     
+            if (!a.closed && !b.closed)
+              return new Date(a.closingAt) > new Date(b.closingAt) ? 1 : -1    
+          // si alguno tiene fecha de cierre, poner último
+          if (a.closingAt)
+            return 1
+          if (b.closingAt)
+            return -1
+          // finalmente, si nada de lo anterior se cumple, ordenar por fecha de publicación
+          return new Date(a.publishedAt) < new Date(b.publishedAt) ? 1 : -1
+        })
         this.setState({
           forum,
           topics
@@ -44,7 +68,13 @@ export default class HomeForum extends Component {
   }
 
   handleScroll = () => {
-    Jump('#anchor')
+    Jump('#anchor', { offset: -40 })
+  }
+
+  handleCargarPropuesta = () => {
+    window.location = urlBuilder.for('admin.topics.create', {
+      forum: this.state.forum.name
+    })
   }
 
   render () {
@@ -69,7 +99,11 @@ export default class HomeForum extends Component {
       }
       author = <span>{ authorName }</span>
     }
-
+    
+    const isClosed = forum.extra.closingAt && new Date(forum.extra.closingAt) < new Date()
+    
+    const tipoConsulta = forum.extra.contentType === 'llamado' && 'convocatoria' || 'consulta'
+    
     return (
       <div className='ext-forum-home'>
         <section
@@ -110,6 +144,13 @@ export default class HomeForum extends Component {
                   Mirá las propuestas y participá
                 </a>
               }
+              { forum.extra.contentType === 'llamado' && 
+                <a
+                  className='btn btn-primary'
+                  onClick={this.handleScroll} >
+                   { !isClosed && 'Proponé' || 'Conocé las propuestas' }
+                </a>
+              }
             </div>
           </div>
         </section>
@@ -125,6 +166,31 @@ export default class HomeForum extends Component {
             </div>
           </div>
         }
+        { isClosed && 
+          <div className='container forum-description'>
+            <div className='row'>
+              <div className='col-md-8 offset-md-2'>
+                <div className="consulta-cerrada">
+                  <img className="lock-icon" src='/ext/lib/boot/lock.png' />
+                  <h5>La {tipoConsulta} se encuentra cerrada</h5>
+                  {forum.extra.palabrasCierre && 
+                    <p>{forum.extra.palabrasCierre}</p>
+                  }
+                  {forum.extra.linkCierre && 
+                    <a
+                      className='btn btn-primary btn-informe-cierre'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      href={forum.extra.linkCierre} >
+                      Ver informe de cierre
+                    </a>
+                  }
+                  <p>La {tipoConsulta} ya no está abierta a votaciones o aportes.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
         { (forum.extra && forum.extra.richSummary) ?
           <ForumDescription content={forum.extra.richSummary} />
         :
@@ -132,17 +198,28 @@ export default class HomeForum extends Component {
             {forum.summary}
           </div>
         }
+        { !isClosed && forum.extra.contentType === 'llamado' && 
+         <div className='container cargar-propuesta' id='anchor'>
+          <a
+            className='btn btn-primary'
+            onClick={this.handleCargarPropuesta} >
+            Subí tu propuesta
+          </a>
+         </div>
+        }
         <ForumStat forum={forum}/>
-        <div className='container topics-container' id='anchor' >
+        <div className='container topics-container' >
           {this.state.topics.length > 0 && (forum.extra.contentType === 'ejes' || forum.extra.contentType === undefined) &&
-            <h5>{`${this.state.topics.length} ${this.state.topics.length > 1 ? 'ejes comprenden' : 'eje comprende'} esta consulta`}</h5>
+            <h5 id='anchor'>{`${this.state.topics.length} ${this.state.topics.length > 1 ? 'ejes comprenden' : 'eje comprende'} esta consulta`}</h5>
           }
           {this.state.topics.length > 0 && forum.extra.contentType === 'propuestas' &&
-            <h5>{`${this.state.topics.length} ${this.state.topics.length > 1 ? 'propuestas comprenden' : 'propuesta comprende'} esta consulta`}</h5>
+            <h5 id='anchor'>{`${this.state.topics.length} ${this.state.topics.length > 1 ? 'propuestas comprenden' : 'propuesta comprende'} esta consulta`}</h5>
+          }
+          {this.state.topics.length > 0 && forum.extra.contentType === 'llamado' &&
+            <h5 id={!isClosed && forum.extra.contentType === 'llamado' ? '' : 'anchor'}>Hay {this.state.topics.length} propuestas en esta convocatoria</h5>
           }
           <div className='topics-card-wrapper'>
             {this.state.topics
-              .sort((a,b) => a.mediaTitle.localeCompare(b.mediaTitle))
               .map((topic) => <TopicCard key={topic.id} topic={topic} />)
             }
           </div>

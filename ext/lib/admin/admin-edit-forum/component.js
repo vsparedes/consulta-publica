@@ -211,8 +211,9 @@ export default class EditForum extends Component {
               <label>Fecha de cierre</label>
               <div className='form-group clearfix'>
                 <input
+                  name='closingAt'
                   type='date'
-                  value={closingAt}
+                  value={closingAt.substr(0,10)}
                   onChange={this.handleChangeExtra('closingAt')} />
               </div>
             </fieldset>

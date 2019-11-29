@@ -100,7 +100,7 @@ class HomeMultiForum extends Component {
                 width="270px"
               />
               <p className='lead highlight'>
-                Refundemos la democracia Chilena: más abierta, transparente y colaborativa.
+                Construyamos una Argentina más abierta, transparente y colaborativa.
               </p>
               <button
                 className='btn btn-primary'

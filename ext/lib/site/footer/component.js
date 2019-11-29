@@ -11,7 +11,7 @@ export default class Footer extends Component {
           <div className='institutional'>
             <div className='logo gob'>
               <a href='/'>
-                <img src='/ext/lib/site/footer/logo-footer.jpg' />
+                <img src='/ext/lib/site/footer/logo-footer.svg' />
               </a>
             </div>
             <p className='text-muted small'>

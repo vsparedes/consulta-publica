@@ -13,22 +13,21 @@
 
 
 ## Introducción 
-Este **manual instructivo** está destinado a los administradores de organismos subnacionales que implementen una versión de la plataforma Consulta Pública, suministrada por la Secretaria de Modernización.
+Este **manual instructivo** está destinado a los administradores de organismos subnacionales que implementen una versión de la plataforma Consulta Pública, suministrada por la Dirección Nacional de Gobierno Abierto de la Secretaría de Innovación Pública.
 ## ¿Qué es [Consulta Pública](https://consultapublica.argentina.gob.ar/)?
-Consulta Pública es un canal de diálogo online y debate que permite la interacción entre el gobierno y la consulta, promueve la participación ciudadana y ayuda a fortalecer la democracia.
+Consulta Pública es un canal de diálogo online y debate que permite la interacción entre el gobierno y la ciudadanía, promueve la participación y ayuda a fortalecer la democracia.
 
-En Consulta Pública se abren temas e iniciativas a la ciudadanía, para posibilitar la participación a través de comentarios y opiniones con el objetivo de mejorar las políticas implementadas. A esta instancia de participación la llamamos **“Consulta Pública”.**
+En Consulta Pública se abren temas e iniciativas a la ciudadanía, para posibilitar la participación a través de comentarios y opiniones con el objetivo de mejorar las políticas implementadas.
 
 En la plataforma se pueden crear múltiples consultas digitales por un plazo determinado sobre las temáticas que se quieran abrir a consideración.
 ## ¿Qué es [Consulta Pública](https://consultapublica.argentina.gob.ar) distribuible?
-Es una versión de la plataforma Consulta Pública que tiene por objetivo ser distribuida a distintos organismos subnacionales. Su implementación en estas áreas permite la creación de canal digital de diálogo entre gobierno y ciudadanía.
+Es una versión de la plataforma Consulta Pública que tiene por objetivo ser distribuida a distintos organismos subnacionales. Su implementación en estas áreas permite la creación de un canal digital de diálogo entre gobierno y ciudadanía.
 
-Esta Plataforma tiene un desarrollo basado en la adaptación del código abierto **DemocracyOS,** diseñada para informar, debatir y votar propuestas públicas hacia la construcción de una democracia adaptada al siglo XXI. Este código fue suministrado por Democracia en Red y se encuentra a disposición de la Secretaría de Modernización.
+Esta Plataforma tiene un desarrollo basado en la adaptación del código abierto **DemocracyOS,** diseñada para informar, debatir y votar propuestas públicas hacia la construcción de una democracia adaptada al siglo XXI. Este código fue suministrado por Democracia en Red y se encuentra a disposición de la Dirección Nacional de Gobierno Abierto.
 ## ¿Cómo hago para implementar una versión de Consulta Pública?
-Para tener una versión de Consulta Pública, por favor escribinos a gobiernoabierto@modernizacion.gob.ar
+Para tener una versión de Consulta Pública, por favor escribinos a gobiernoabierto@jefatura.gob.ar
 
---------------------------------------------------------------------
-Ya sos **organizador** de tu plataforma de Consulta Pública. Esto quiere decir que sos el responsable de crear las consultas. También podés asignar a otras áreas la posibilidad de gestionar consultas dentro de la plataforma.
+Luego podrás ser **organizador** de tu plataforma de Consulta Pública. Esto quiere decir que sos el responsable de crear las consultas. También podés asignar a otras áreas la posibilidad de gestionar consultas dentro de la plataforma.
 
 Esta guía te ayudará a:
 
@@ -48,12 +47,12 @@ En la pantalla de inicio, las consultas se muestran por los filtros de **“nuev
 
 ![Imagen](/docs/admin-manual/image1.png?raw=true)
 
-Al ingresar en la consulta, se visualiza un espacio con un **información general** que contiene una explicación de dónde surge, qué se espera con la consulta, a qué público está destinada y donde se compartirá toda la información vinculada a la misma necesaria para que las personas que quieren participar cuenten con recursos para hacerlo.
+Al ingresar en la consulta, se visualiza un espacio con **información general** que contiene una explicación de dónde surge, qué se espera con la consulta, a qué público está destinada y donde se compartirá toda la información vinculada a la misma necesaria para que las personas que quieren participar cuenten con recursos para hacerlo.
 
 ![Imagen](/docs/admin-manual/image2.png?raw=true)
 
 ## ¿Para qué sirven los ejes?
-La consulta debe estar organizada en **“ejes”.** El eje es el espacio donde se realiza la participación y la moderación de los comentarios de la ciudadanía. La elección de la cantidad de ejes está determinada por el objetivo de la consulta y naturaleza del objeto a consultar. Puede dividirse en componentes temáticos, segmentar por el público involucrado o armar ejes sobre aspectos transversales.
+La consulta debe estar organizada en **“ejes”.** El eje es el espacio donde se realiza la participación y la moderación de los comentarios de la ciudadanía. La elección de la cantidad de ejes está determinada por el objetivo de la consulta y la naturaleza del objeto a consultar. Puede dividirse en componentes temáticos, segmentarse por el público involucrado o armar ejes sobre aspectos transversales.
 
 ![Imagen](/docs/admin-manual/image3.png?raw=true)
 
@@ -62,12 +61,12 @@ Para ingresar al **panel de administración**, hacé click en “MIS CONSULTAS�
 
 ![Imagen](/docs/admin-manual/image4.png?raw=true)
 
-En **ajustes** podés configurar tu perfil, contraseña, notificaciones y administrar las consultas.
+En **configuración/ajustes** podés configurar tu perfil, contraseña, notificaciones y administrar las consultas.
 
 ![Imagen](/docs/admin-manual/image5.png?raw=true)
 
 ## ¿Cómo crear una nueva consulta?
-Las **consultas** son creadas únicamente por el organizador de la Plataforma. En la opción **“administración”** dentro del panel se visualizan, crean y editan las consultas creadas.
+Las **consultas** son creadas únicamente por el organizador de la Plataforma. En la opción **“consultas”** dentro del panel se visualizan, crean y editan las consultas creadas.
 
 Al crear una consulta, debés completar todos los campos que figuran a continuación:
 
@@ -88,11 +87,11 @@ Una vez creada las consultas, las podés encontrar en **“MIS CONSULTAS”** y 
 ![Imagen](/docs/admin-manual/image7.png?raw=true)
 
 ## ¿Cómo administrar una Consulta?
-Cada consulta tiene su propia configuración de temas (ejes), privilegios, contenido (editar consulta), comentarios y estadísticas y moderación de etiquetas.
+Cada consulta tiene su propia configuración de temas (ejes), privilegios, contenido (editar consulta), categorías, comentarios y estadísticas y moderación de etiquetas.
 
 ![Imagen](/docs/admin-manual/image8.png?raw=true)
 
- 1) **Temas**: permite editar y agregar **ejes** a la consulta.
+ 1) **Ejes**: permite editar y agregar **ejes** a la consulta.
  a) para **crear** un eje, hacé click en “nuevo”.
  b) En esta misma pantalla se pueden ver los ejes creados. Para **editarlos**, se debe hacer click sobre el mismo.
  c) Para **eliminar** un eje creado se debe hacer click en el icono del cesto de basura. 
@@ -101,19 +100,19 @@ Cada consulta tiene su propia configuración de temas (ejes), privilegios, conte
 
 En el formulario **“edición de tema”** para la creación de ejes, los campos a completar son:
 
-Título: escribir el título del eje. Se recomienda asignar un número asociado al orden.
+**Título:** escribir el título del eje. Se recomienda asignar un número asociado al orden.
 
-Categoría:
+**Categoría:**
  
- Atributos: escribir la pregunta que será definida en el eje de la consulta. Este contenido depende de la acción elegida.
+ **Atributos:** escribir la pregunta que será definida en el eje de la consulta. Este contenido depende de la acción elegida.
 
-Cover URL: Para colocar una imágen de fondo para el eje, la misma debe estar en un repositorio y copiar el vínculo.
+**Cover URL:** Para colocar una imágen de fondo para el eje, la misma debe estar en un repositorio y copiar el vínculo.
  
- Autor: Nombre del autor u organismo responsable que realiza la consulta.
+ **Autor:** Nombre del autor u organismo responsable que realiza la consulta.
 
-Autor URL: Sitio web, enlace al autor u organismo responsable que realiza la consulta. En la vista del eje al hacer click en “autor” te derivará a ese enlace.
+**Autor URL:** Sitio web, enlace al autor u organismo responsable que realiza la consulta. En la vista del eje al hacer click en “autor” te derivará a ese enlace.
 
-Acción: En todos los ejes está disponible el **foro debate**, que permite a los usuarios realizar comentarios, responder comentarios de otros y valorar positiva o negativamente esos comentarios. Además, se puede **complementar** con **una sola** de estas acciones: voto, encuesta, causa, rango y jerarquía.  La acción se elige en el **“formulario de edición de eje”.**
+**Acción:** En todos los ejes está disponible el **foro debate**, que permite a los usuarios realizar comentarios, responder comentarios de otros y valorar positiva o negativamente esos comentarios. Además, se puede **complementar** con **una sola** de estas acciones: voto, encuesta, causa, rango y jerarquía.  La acción se elige en el **“formulario de edición de eje”.**
  
 ![Imagen](/docs/admin-manual/image10.png?raw=true)
 
@@ -124,16 +123,13 @@ Cada una de las acciones tiene su *formato predeterminado*. Lo que aparece en el
 -   **Rango:** en el eje se muestra un panel con la pregunta definida en el campo de “Atributos”, y con una barra deslizante (*slider*) que permitirá al usuario indicar en qué nivel se encuentra a favor o en en contra con la consulta/ pregunta realizada.
 - **Jerarquía:** se muestra un panel con la pregunta definida en el campo de “Atributos”, con las opciones que deberán ser arrastradas haciendo click y asignada en un nuevo orden, que dé cuenta de la jerarquía.
 
-Fuente: link de donde se obtuvo la información del contenido.
+**Fuente:** link de donde se obtuvo la información del contenido.
 
-Contenido: Este campo es para desarrollar el texto que ayudará a los usuarios interiorizarse sobre el tema que se busca debatir.
-Dentro de la opción contenido se pueden agregar **“atajos de navegación”** qué facilitan la navegabilidad a través del contenido de eje en la versión web de la plataforma.
+**Contenido:** Este campo es para desarrollar el texto que ayudará a los usuarios interiorizarse sobre el tema que se busca debatir.
 
-![Imagen](/docs/admin-manual/image11.png?raw=true)
+**Fecha de cierre:** define el límite de hasta cuando se puede interactuar con eje.
 
-Fecha de cierre: define el límite de hasta cuando se puede interactuar con eje.
-
-Referencias: espacio para un link adicional con referencias para sumar al contenido.
+**Referencias:** espacio para un link adicional con referencias para sumar al contenido.
 
 La consulta, una vez cargada, debe ser **guardada**. Existe la opción de “publicar” en el momento de iniciar la consulta.
 
@@ -150,8 +146,6 @@ La consulta, una vez cargada, debe ser **guardada**. Existe la opción de “pub
 -  **administradores:** pueden otorgar permisos a otros usuarios, editar opciones y editar contenido (crear y editar ejes, etc).
 -  **colaboradores:** pueden crear, editar, borrar y publicar ejes.
 - **autores:** pueden crear y editar ejes, pero no publicarlos o editarlos.
-
-![Imagen](/docs/admin-manual/image14.png?raw=true)
 
 3. **Editar consulta:** en caso de querer modificar la información general sobre la consulta y controlar algunas opciones, se pueden realizar **cambios** en los mismos campos completados cuando se creó la consulta.
 

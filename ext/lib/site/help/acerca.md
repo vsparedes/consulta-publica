@@ -14,7 +14,7 @@ Ya sos parte de estas conversaciones, es tu turno para hablar.
 
 **Teléfono:** (54-011) 5985-8600
 
-**Correo electrónico:** [gobiernoabierto@modernizacion.gob.ar](mailto:gobiernoabierto@modernizacion.gob.ar)
+**Correo electrónico:** [gobiernoabierto@jefatura.ar](mailto:gobiernoabierto@jefatura.gob.ar)
 ​
 ## Tecnología
 

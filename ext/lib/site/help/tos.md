@@ -56,7 +56,7 @@ Las siguientes actividades, sean lícitas o ilícitas, se encuentran expresament
 * Publicar de manera intencionada o con conocimiento injurias o calumnias;
 * Publicar, con el intento de engañar, contenido que es falso o inexacto;
 * Intentar usurpar la identidad de otro Usuario, representando de manera falsa su afiliación con cualquier individuo o entidad, o utilizar el nombre de otro Usuario con el propósito de engañar;
-* Promover, defender o mostrar pornografía, obscenidad, vulgaridad, blasfemia, odio, fanatismo, racismo y/o violencia. En caso de sufrir alguna de estas situaciones, comunicarse con el Administrador a través de [gobiernoabierto@modernizacion.gob.ar](gobiernoabierto@modernizacion.gob.ar)
+* Promover, defender o mostrar pornografía, obscenidad, vulgaridad, blasfemia, odio, fanatismo, racismo y/o violencia. En caso de sufrir alguna de estas situaciones, comunicarse con el Administrador a través de [gobiernoabierto@jefatura.gob.ar](gobiernoabierto@jefatura.gob.ar)
 * Vulnerar los derechos establecidos en la Ley N° 25.326 de Protección de Datos Personales.
 ​
 

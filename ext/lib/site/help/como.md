@@ -3,5 +3,5 @@
 Acá podes ver o descargar un manual de usuario que explica las funcionalidades básicas de la Plataforma de Consulta Pública.
 <br>
 <br>
-<a class="btn btn-primary btn-lg" href="https://drive.google.com/file/d/0B6plaXO3RncLUkhUSEVaVmlseTQ/view" target="_blank">
-Abrir Manual de Usuario</a>
+<!-- <a class="btn btn-primary btn-lg" href="https://docs.google.com/presentation/d/1zpjxKAsYge7-wCpMjRuHt_5V7zKknIBQeipCSZqZ5AM/edit#slide=id.p" target="_blank">Abrir Manual de Usuario</a> -->
+<a class="btn btn-primary btn-lg" href="https://www.argentina.gob.ar/sites/default/files/copia_de_manual_de_ingreso_plataforma_1.pdf" target="_blank">Abrir Manual de Usuario</a>

@@ -4,9 +4,9 @@ const t = translations.t
 
 const overrides = {
   'templates.email.greeting': 'Estimado/a, {userName}',
-  'templates.email.signature': 'Subsecretaría de Innovación Pública y Gobierno Abierto',
+  'templates.email.signature': 'Subsecretaría de Servicios y País Digital',
 
-  'templates.welcome-email.subject': 'Bienvenido a Consulta Pública',
+  'templates.welcome-email.subject': 'Bienvenido/a a Consulta Pública',
   'templates.welcome-email.body': 'Para completar su registro haga <a href=\"{validateUrl}\">click aquí.</a>',
   'templates.welcome-email.ps': 'Si no ha sido usted quien se registró, por favor ignore este correo electrónico.',
 

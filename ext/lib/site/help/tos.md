@@ -8,7 +8,7 @@ Los siguientes Términos y Condiciones regulan el uso de la Plataforma de Consul
 
 El registro y uso del “Sitio Web” por parte de un usuario (en adelante el/los “Usuario/s”) indica la aceptación absoluta de los Términos y Condiciones presentes y de la Política de Privacidad.
 
-La plataforma de Consulta Pública es un sitio web desarrollado por la Dirección Nacional de Gobierno Abierto de la Secretaría de Innovación Pública (en adelante el “Administrador”) que promueve la participación ciudadana digital en el diseño e implementación de políticas públicas.
+La plataforma de Consulta Pública es un sitio web desarrollado por la Dirección Nacional de Gobierno Abierto y Conducta Digital de la Secretaría de Innovación, Ciencia y Tecnología (en adelante el “Administrador”) que promueve la participación ciudadana digital en el diseño e implementación de políticas públicas.
 
 Esta herramienta favorece la generación de espacios de colaboración entre el Estado, la sociedad civil y el sector privado, para co-diseñar y co-producir valor público.
 ​

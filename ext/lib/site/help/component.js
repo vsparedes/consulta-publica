@@ -22,7 +22,7 @@ export default class HelpLayout extends PureComponent {
       slug: 'acerca',
       path: '/ayuda/acerca'
     },
-        {
+    {
       title: 'Estadisticas',
       Content: Stats,
       slug: 'estadisticas',
@@ -39,13 +39,13 @@ export default class HelpLayout extends PureComponent {
       Content: () => <Content content={articles.pp} />,
       slug: 'privacidad',
       path: '/ayuda/privacidad'
-    },
-    {
-      title: t('help.markdown.title'),
-      Content: MarkdownGuide,
-      slug: 'markdown',
-      path: '/ayuda/markdown'
     }
+    // {
+    //   title: t('help.markdown.title'),
+    //   Content: MarkdownGuide,
+    //   slug: 'markdown',
+    //   path: '/ayuda/markdown'
+    // }
   ]
 
   render () {

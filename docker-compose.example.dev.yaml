@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    command: ["./node_modules/.bin/gulp", "bws"]
+    environment:
+      - NODE_ENV=development
+      - DEBUG=democracyos*
+      - HOST: 'localhost' #completar
+      - PORT: 3000
+      # Requerido: Configurar mongo database
+      - MONGO_URL=mongodb://mongo/mi-consultapublica
+      # Requerido: Genere un token para JWT
+      - JWT_SECRET=
+      - DEBUG: 'consultapublica:api'
+      - MODERATOR_ENABLED: 'true'
+      # Configuracion del mailer
+      - NOTIFICATIONS_MAILER_EMAIL=miconsultapublica@midominio.com
+      - NOTIFICATIONS_MAILER_NAME=Mi Consulta Digital
+      - NOTIFICATIONS_NODEMAILER={"host:"xxxxx.smtp.com","port":465,"secure":true,"auth":{"user":"xxxxxxxx","pass":"xxxxxxx"}} #Cambiar
+      # Configuracion de la autenticacion
+      - CUSTOM_SIGNIN: 'true'
+      - OIDC_AUTH= ''
+      - OIDC_CALLBACK= ''
+      - OIDC_CLIENT_ID= ''
+      - OIDC_CLIENT_SECRET= ''
+      - OIDC_ISSUER= ''
+      - OIDC_TOKEN= ''
+      - OIDC_USER= ''
+      - SSL_CERT: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+      # Importante: Defina el "Staff" de administradores para que en su registro el sistema le de privilegios de admin
+      # Para varios admins:
+      # - STAFF=hola@miemail.com,usuario@otroemail.com,otrousuario@nuevoemail.com
+      # Para un solo admin:
+      - STAFF= 'gobiernoabiertoargentina@gmail.com'
+      - WARN_HTTP: 'false'
+    ports:
+    - 3000:3000
+
+  mongo:
+    image: mongo:3.2
+    ports:
+      - 27017:27017
+    # Optionally mount external data directory
+    volumes:
+      - ./tmp/db:/data/db

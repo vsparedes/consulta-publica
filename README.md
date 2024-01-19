@@ -11,9 +11,9 @@ El código se basa en [DemocracyOS](https://github.com/DemocracyOS/democracyos),
 
 ## Indice
 
-- [Development](/docs/development.md)
-- [Consejos para el desarrollo](/docs/consejos-dev.md)
-- [Personalización de la plataforma](/docs/personalizacion.md)
-- [Deployment](/deployment/README.md)
-- [Manual instructivo para administradores](/docs/manual-admin.md)
-- [Manual instructivo para usuarios](/docs/manual-usuarios.md)
+- [Development](/cp-docs/development.md)
+- [Consejos para el desarrollo](/cp-docs/consejos-dev.md)
+- [Personalización de la plataforma](/cp-docs/personalizacion.md)
+- [Deployment](/cp-docs/deployment/README.md)
+- [Manual instructivo para administradores](/cp-docs/manual-admin.md)
+- [Manual instructivo para usuarios](/cp-docs/manual-usuarios.md)

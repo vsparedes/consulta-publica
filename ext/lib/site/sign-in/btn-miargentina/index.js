@@ -16,10 +16,9 @@ export default class BtnMiArgentina extends Component {
         method='get'
         role='form'>
         <button
-          className='btn btn-block btn-miargentina'
+          className='btn-miargentina-btn'
           type='submit'>
-         <div className='user-icon'></div>
-          {'Mi Argentina'}
+          <img src='/ext/lib/site/sign-in/miargentina.svg' width='200' />
         </button>
       </form>
     )

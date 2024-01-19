@@ -1,4 +1,4 @@
-![Consulta Pública Argentina](/cp-docs//docsconsulta-publica-header.png?raw=true "Consulta Pública Argentina")
+![Consulta Pública Argentina](/cp-docs//docs/consulta-publica-header.png?raw=true "Consulta Pública Argentina")
 
 # Consulta Pública
  [![GitHub tag](https://img.shields.io/github/tag/datosgobar/consulta-publica.svg?style=flat-square)](https://GitHub.com/datosgobar/consulta-publica/tags) 

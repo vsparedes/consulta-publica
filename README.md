@@ -1,4 +1,4 @@
-![Consulta Pública Argentina](/cp-docs/consulta-publica-header.png?raw=true "Consulta Pública Argentina")
+![Consulta Pública Argentina](/cp-docs//docsconsulta-publica-header.png?raw=true "Consulta Pública Argentina")
 
 # Consulta Pública
  [![GitHub tag](https://img.shields.io/github/tag/datosgobar/consulta-publica.svg?style=flat-square)](https://GitHub.com/datosgobar/consulta-publica/tags) 
@@ -11,9 +11,9 @@ El código se basa en [DemocracyOS](https://github.com/DemocracyOS/democracyos),
 
 ## Indice
 
-- [Development](/cp-docs/development.md)
-- [Consejos para el desarrollo](/cp-docs/consejos-dev.md)
-- [Personalización de la plataforma](/cp-docs/personalizacion.md)
+- [Development](/cp-docs/docs/development.md)
+- [Consejos para el desarrollo](/cp-docs/docs/consejos-dev.md)
+- [Personalización de la plataforma](/cp-docs/docs/personalizacion.md)
 - [Deployment](/cp-docs/deployment/README.md)
-- [Manual instructivo para administradores](/cp-docs/manual-admin.md)
-- [Manual instructivo para usuarios](/cp-docs/manual-usuarios.md)
+- [Manual instructivo para administradores](/cp-docs/docs/manual-admin.md)
+- [Manual instructivo para usuarios](/cp-docs/docs/manual-usuarios.md)

@@ -31,7 +31,7 @@ function requestUserVerify(req, res, next) {
   dbApi.user.requestVerify(verifyId, function (err, user) {
     if(err)
       next(err)
-    log('User verify request sent successfully for id %s', user.id)
+    log('User verify request sent successfully for id %s', user._id)
     dbApi.user.editExtra(fromId, { 'extra.verificationRequest': Date.now() }).then((user) => {
       return res.status(200).json({
         status: 200,

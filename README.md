@@ -8,6 +8,7 @@
 
 El código se basa en [DemocracyOS](https://github.com/DemocracyOS/democracyos), plataforma de código abierto especialmente diseñada para informar, debatir y votar propuestas públicas de forma online hacia la construcción de una democracia adaptada al siglo XXI.
 
+> 2024-03-20 - Se deshabilito el minify del build porque en NODE_ENV=production el mismo fallaba en buildear /public/admin.js. En NODE_ENV=development el build funciona correctamente pero porque no se minifica el codigo... La causas de este error son desconocidas.
 
 ## Indice
 

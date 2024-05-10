@@ -1,7 +1,7 @@
 {
-  "locale": "en",
+  "locale": "es",
   "protocol": "http",
-  "warnHTTP": true,
+  "warnHTTP": false,
   "host": "localhost",
   "publicPort": 3000,
   "mongoUrl": "mongodb://localhost/DemocracyOS-dev",
@@ -15,8 +15,8 @@
   "allowEmailAliases": true,
   "facebookSignin": false,
   "publicEmails": false,
-  "moderatorEnabled": false,
-  "checkNodeVersion": true,
+  "moderatorEnabled": true,
+  "checkNodeVersion": false,
   "auth": {
     "basic": {
       "username": "",
@@ -106,7 +106,7 @@
       "username": "@democracyos"
     }
   },
-  "logo": "/lib/boot/logo.png",
+  "logo": "/ext/lib/site/footer/logo-footer.svg",
   "logoMobile": "/lib/boot/logo-mobile.png",
   "favicon": "/lib/boot/favicon.ico",
   "organizationName": "DemocracyOS on GitHub",
@@ -126,8 +126,8 @@
   "googleAPIKey": "",
   "visibility": "visible",
   "usersWhitelist": false,
-  "multiForum": false,
-  "restrictForumCreation": false,
+  "multiForum": true,
+  "restrictForumCreation": true,
   "defaultForum": "",
   "tweetText": "",
   "forceSafeImageURLs": true,
@@ -152,7 +152,8 @@
     "uk",
     "zh_TW"
   ],
-  "enforceLocale": false,
+  "enforceLocale": true,
+  "customSignin": true,
   "hashedSigninPath": "signin-hash",
   "hashedSignupPath": "signup-hash"
 }
